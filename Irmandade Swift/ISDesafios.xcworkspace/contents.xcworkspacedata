@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:ISDesafioMod10/ISDesafioMod10.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ISDesafioMod07/ISDesafioMod07.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ISDesafioMod06/ISDesafioMod06.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ISDesafioMod04/ISDesafioMod04.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ISDesafioMod03/ISDesafioMod03.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ISDesafioMod02/ISDesafioMod02.xcodeproj">
+   </FileRef>
+</Workspace>

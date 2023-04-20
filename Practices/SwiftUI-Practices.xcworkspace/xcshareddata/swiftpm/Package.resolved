@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "lottie-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-ios.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "3dffa230e2a1da676c1bd4c5292c3b9fed9be907"
+      }
+    },
+    {
+      "identity" : "ntwrk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Marsala-Corp/Ntwrk.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "78b9f3a790924dacfdc95cae6996e4d0458f8781"
+      }
+    }
+  ],
+  "version" : 2
+}
