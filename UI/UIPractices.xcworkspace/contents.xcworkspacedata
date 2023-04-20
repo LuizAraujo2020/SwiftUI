@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:UICarousel/UICarousel.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UIGrid/UIGrid.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UICustomColorPicker/UICustomColorPicker.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UISpotifyClone/UISpotifyClone.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UIPinterestGrid/UIPinterestGrid.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UIParallaxMovies/UIParallaxMovies.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UILocalization/UILocalization.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UIBottomSheet/UIBottomSheet.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UI-Weather-I/UI-Weather-I.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UI-2/UI-2.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UIPractices-Sewaa/UIPractices-Sewaa.xcodeproj">
+   </FileRef>
+</Workspace>
