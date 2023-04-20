@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6FB43F6C296DF2FA00BC5F57 /* PropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB43F6B296DF2FA00BC5F57 /* PropertyView.swift */; };
+		6FB43F6E296DF56900BC5F57 /* PropertyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB43F6D296DF56900BC5F57 /* PropertyListView.swift */; };
+		6FB43F70296E020A00BC5F57 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB43F6F296E020A00BC5F57 /* DetailsView.swift */; };
+		6FB43F72296E034E00BC5F57 /* DetailsImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB43F71296E034E00BC5F57 /* DetailsImageCardView.swift */; };
+		6FB43F74296E120200BC5F57 /* TenantDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB43F73296E120200BC5F57 /* TenantDetailsView.swift */; };
+		6FFC078D296CE41F00E87E49 /* UIPractices_SewaaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC078C296CE41F00E87E49 /* UIPractices_SewaaApp.swift */; };
+		6FFC078F296CE41F00E87E49 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC078E296CE41F00E87E49 /* ContentView.swift */; };
+		6FFC0791296CE42100E87E49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FFC0790296CE42100E87E49 /* Assets.xcassets */; };
+		6FFC0795296CE42100E87E49 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FFC0794296CE42100E87E49 /* Preview Assets.xcassets */; };
+		6FFC079C296CE46A00E87E49 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6FFC079B296CE46A00E87E49 /* README.md */; };
+		6FFC079E296CE5BF00E87E49 /* attachment_99076814.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFC079D296CE5BF00E87E49 /* attachment_99076814.png */; };
+		6FFC07AC296CEB1D00E87E49 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07AB296CEB1D00E87E49 /* Constants.swift */; };
+		6FFC07AE296CEDD500E87E49 /* BtnTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07AD296CEDD500E87E49 /* BtnTest.swift */; };
+		6FFC07B2296CFC4300E87E49 /* MainButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07B1296CFC4300E87E49 /* MainButtonView.swift */; };
+		6FFC07B4296CFE1600E87E49 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07B3296CFE1600E87E49 /* EntryView.swift */; };
+		6FFC07B6296D013100E87E49 /* UserRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07B5296D013100E87E49 /* UserRegisterView.swift */; };
+		6FFC07B8296D03A100E87E49 /* MainTextfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07B7296D03A100E87E49 /* MainTextfieldView.swift */; };
+		6FFC07BA296D06D000E87E49 /* MainTextfieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07B9296D06D000E87E49 /* MainTextfieldStyle.swift */; };
+		6FFC07BC296D9C1300E87E49 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07BB296D9C1300E87E49 /* LoginView.swift */; };
+		6FFC07BE296D9E9B00E87E49 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07BD296D9E9B00E87E49 /* ConfirmationView.swift */; };
+		6FFC07C0296DABAF00E87E49 /* PropertyImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07BF296DABAF00E87E49 /* PropertyImageCardView.swift */; };
+		6FFC07C2296DABF900E87E49 /* InsuredFlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07C1296DABF900E87E49 /* InsuredFlagView.swift */; };
+		6FFC07C4296DAE9200E87E49 /* FlagBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07C3296DAE9200E87E49 /* FlagBackground.swift */; };
+		6FFC07C8296DB3F400E87E49 /* NavBarButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07C7296DB3F400E87E49 /* NavBarButtonStyle.swift */; };
+		6FFC07CB296DB6DD00E87E49 /* DateRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07CA296DB6DD00E87E49 /* DateRoundedView.swift */; };
+		6FFC07CD296DBB4300E87E49 /* VacantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07CC296DBB4300E87E49 /* VacantCardView.swift */; };
+		6FFC07CF296DBE3000E87E49 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07CE296DBE3000E87E49 /* RoundedCorner.swift */; };
+		6FFC07D1296DCC0500E87E49 /* TextVacantRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07D0296DCC0500E87E49 /* TextVacantRoundedView.swift */; };
+		6FFC07D3296DD29B00E87E49 /* PropertyRowCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07D2296DD29B00E87E49 /* PropertyRowCardView.swift */; };
+		6FFC07D5296DD46200E87E49 /* VacantCapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC07D4296DD46200E87E49 /* VacantCapsuleView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6FB43F6B296DF2FA00BC5F57 /* PropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyView.swift; sourceTree = "<group>"; };
+		6FB43F6D296DF56900BC5F57 /* PropertyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListView.swift; sourceTree = "<group>"; };
+		6FB43F6F296E020A00BC5F57 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		6FB43F71296E034E00BC5F57 /* DetailsImageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsImageCardView.swift; sourceTree = "<group>"; };
+		6FB43F73296E120200BC5F57 /* TenantDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenantDetailsView.swift; sourceTree = "<group>"; };
+		6FFC0789296CE41F00E87E49 /* UIPractices-Sewaa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIPractices-Sewaa.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FFC078C296CE41F00E87E49 /* UIPractices_SewaaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPractices_SewaaApp.swift; sourceTree = "<group>"; };
+		6FFC078E296CE41F00E87E49 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6FFC0790296CE42100E87E49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6FFC0792296CE42100E87E49 /* UIPractices_Sewaa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UIPractices_Sewaa.entitlements; sourceTree = "<group>"; };
+		6FFC0794296CE42100E87E49 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6FFC079B296CE46A00E87E49 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		6FFC079D296CE5BF00E87E49 /* attachment_99076814.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attachment_99076814.png; sourceTree = "<group>"; };
+		6FFC07AB296CEB1D00E87E49 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6FFC07AD296CEDD500E87E49 /* BtnTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtnTest.swift; sourceTree = "<group>"; };
+		6FFC07B1296CFC4300E87E49 /* MainButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonView.swift; sourceTree = "<group>"; };
+		6FFC07B3296CFE1600E87E49 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
+		6FFC07B5296D013100E87E49 /* UserRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterView.swift; sourceTree = "<group>"; };
+		6FFC07B7296D03A100E87E49 /* MainTextfieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextfieldView.swift; sourceTree = "<group>"; };
+		6FFC07B9296D06D000E87E49 /* MainTextfieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextfieldStyle.swift; sourceTree = "<group>"; };
+		6FFC07BB296D9C1300E87E49 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		6FFC07BD296D9E9B00E87E49 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
+		6FFC07BF296DABAF00E87E49 /* PropertyImageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyImageCardView.swift; sourceTree = "<group>"; };
+		6FFC07C1296DABF900E87E49 /* InsuredFlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsuredFlagView.swift; sourceTree = "<group>"; };
+		6FFC07C3296DAE9200E87E49 /* FlagBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagBackground.swift; sourceTree = "<group>"; };
+		6FFC07C7296DB3F400E87E49 /* NavBarButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtonStyle.swift; sourceTree = "<group>"; };
+		6FFC07CA296DB6DD00E87E49 /* DateRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRoundedView.swift; sourceTree = "<group>"; };
+		6FFC07CC296DBB4300E87E49 /* VacantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacantCardView.swift; sourceTree = "<group>"; };
+		6FFC07CE296DBE3000E87E49 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		6FFC07D0296DCC0500E87E49 /* TextVacantRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextVacantRoundedView.swift; sourceTree = "<group>"; };
+		6FFC07D2296DD29B00E87E49 /* PropertyRowCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyRowCardView.swift; sourceTree = "<group>"; };
+		6FFC07D4296DD46200E87E49 /* VacantCapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacantCapsuleView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6FFC0786296CE41F00E87E49 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6FFC0780296CE41F00E87E49 = {
+			isa = PBXGroup;
+			children = (
+				6FFC079B296CE46A00E87E49 /* README.md */,
+				6FFC079D296CE5BF00E87E49 /* attachment_99076814.png */,
+				6FFC078B296CE41F00E87E49 /* UIPractices-Sewaa */,
+				6FFC078A296CE41F00E87E49 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6FFC078A296CE41F00E87E49 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC0789296CE41F00E87E49 /* UIPractices-Sewaa.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6FFC078B296CE41F00E87E49 /* UIPractices-Sewaa */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC078C296CE41F00E87E49 /* UIPractices_SewaaApp.swift */,
+				6FFC078E296CE41F00E87E49 /* ContentView.swift */,
+				6FFC07AD296CEDD500E87E49 /* BtnTest.swift */,
+				6FFC079F296CE76600E87E49 /* Screens */,
+				6FFC0790296CE42100E87E49 /* Assets.xcassets */,
+				6FFC0792296CE42100E87E49 /* UIPractices_Sewaa.entitlements */,
+				6FFC0793296CE42100E87E49 /* Preview Content */,
+			);
+			path = "UIPractices-Sewaa";
+			sourceTree = "<group>";
+		};
+		6FFC0793296CE42100E87E49 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC0794296CE42100E87E49 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6FFC079F296CE76600E87E49 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC07A4296CE7B000E87E49 /* Confirmation */,
+				6FFC07A6296CE7C200E87E49 /* Details */,
+				6FFC07A1296CE77B00E87E49 /* Entry */,
+				6FFC07A2296CE7A100E87E49 /* Login */,
+				6FFC07A5296CE7BB00E87E49 /* Property */,
+				6FFC07A3296CE7A900E87E49 /* Register */,
+				6FFC07A0296CE77000E87E49 /* Shared */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		6FFC07A0296CE77000E87E49 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC07A7296CE81D00E87E49 /* Atoms */,
+				6FFC07A8296CE82E00E87E49 /* Molecules */,
+				6FFC07A9296CE88900E87E49 /* Organisms */,
+				6FFC07AA296CE89500E87E49 /* Templates */,
+				6FFC07AB296CEB1D00E87E49 /* Constants.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		6FFC07A1296CE77B00E87E49 /* Entry */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC07B3296CFE1600E87E49 /* EntryView.swift */,
+			);
+			path = Entry;
+			sourceTree = "<group>";
+		};
+		6FFC07A2296CE7A100E87E49 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC07BB296D9C1300E87E49 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		6FFC07A3296CE7A900E87E49 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC07B5296D013100E87E49 /* UserRegisterView.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		6FFC07A4296CE7B000E87E49 /* Confirmation */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC07BD296D9E9B00E87E49 /* ConfirmationView.swift */,
+			);
+			path = Confirmation;
+			sourceTree = "<group>";
+		};
+		6FFC07A5296CE7BB00E87E49 /* Property */ = {
+			isa = PBXGroup;
+			children = (
+				6FB43F6B296DF2FA00BC5F57 /* PropertyView.swift */,
+				6FB43F6D296DF56900BC5F57 /* PropertyListView.swift */,
+			);
+			path = Property;
+			sourceTree = "<group>";
+		};
+		6FFC07A6296CE7C200E87E49 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				6FB43F6F296E020A00BC5F57 /* DetailsView.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		6FFC07A7296CE81D00E87E49 /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC07C9296DB6B200E87E49 /* Texts */,
+				6FFC07C6296DB37F00E87E49 /* Buttons */,
+				6FFC07C5296DB2A300E87E49 /* Graphicals */,
+				6FFC07B7296D03A100E87E49 /* MainTextfieldView.swift */,
+				6FFC07B9296D06D000E87E49 /* MainTextfieldStyle.swift */,
+			);
+			path = Atoms;
+			sourceTree = "<group>";
+		};
+		6FFC07A8296CE82E00E87E49 /* Molecules */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC07C1296DABF900E87E49 /* InsuredFlagView.swift */,
+				6FFC07CC296DBB4300E87E49 /* VacantCardView.swift */,
+				6FFC07D2296DD29B00E87E49 /* PropertyRowCardView.swift */,
+			);
+			path = Molecules;
+			sourceTree = "<group>";
+		};
+		6FFC07A9296CE88900E87E49 /* Organisms */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC07BF296DABAF00E87E49 /* PropertyImageCardView.swift */,
+				6FB43F71296E034E00BC5F57 /* DetailsImageCardView.swift */,
+				6FB43F73296E120200BC5F57 /* TenantDetailsView.swift */,
+			);
+			path = Organisms;
+			sourceTree = "<group>";
+		};
+		6FFC07AA296CE89500E87E49 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+		6FFC07C5296DB2A300E87E49 /* Graphicals */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC07C3296DAE9200E87E49 /* FlagBackground.swift */,
+				6FFC07CE296DBE3000E87E49 /* RoundedCorner.swift */,
+			);
+			path = Graphicals;
+			sourceTree = "<group>";
+		};
+		6FFC07C6296DB37F00E87E49 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC07B1296CFC4300E87E49 /* MainButtonView.swift */,
+				6FFC07C7296DB3F400E87E49 /* NavBarButtonStyle.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		6FFC07C9296DB6B200E87E49 /* Texts */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC07CA296DB6DD00E87E49 /* DateRoundedView.swift */,
+				6FFC07D0296DCC0500E87E49 /* TextVacantRoundedView.swift */,
+				6FFC07D4296DD46200E87E49 /* VacantCapsuleView.swift */,
+			);
+			path = Texts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6FFC0788296CE41F00E87E49 /* UIPractices-Sewaa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FFC0798296CE42100E87E49 /* Build configuration list for PBXNativeTarget "UIPractices-Sewaa" */;
+			buildPhases = (
+				6FFC0785296CE41F00E87E49 /* Sources */,
+				6FFC0786296CE41F00E87E49 /* Frameworks */,
+				6FFC0787296CE41F00E87E49 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "UIPractices-Sewaa";
+			productName = "UIPractices-Sewaa";
+			productReference = 6FFC0789296CE41F00E87E49 /* UIPractices-Sewaa.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6FFC0781296CE41F00E87E49 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					6FFC0788296CE41F00E87E49 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 6FFC0784296CE41F00E87E49 /* Build configuration list for PBXProject "UIPractices-Sewaa" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6FFC0780296CE41F00E87E49;
+			productRefGroup = 6FFC078A296CE41F00E87E49 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6FFC0788296CE41F00E87E49 /* UIPractices-Sewaa */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6FFC0787296CE41F00E87E49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FFC079C296CE46A00E87E49 /* README.md in Resources */,
+				6FFC0795296CE42100E87E49 /* Preview Assets.xcassets in Resources */,
+				6FFC079E296CE5BF00E87E49 /* attachment_99076814.png in Resources */,
+				6FFC0791296CE42100E87E49 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6FFC0785296CE41F00E87E49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FFC07CD296DBB4300E87E49 /* VacantCardView.swift in Sources */,
+				6FB43F6E296DF56900BC5F57 /* PropertyListView.swift in Sources */,
+				6FFC07C4296DAE9200E87E49 /* FlagBackground.swift in Sources */,
+				6FB43F74296E120200BC5F57 /* TenantDetailsView.swift in Sources */,
+				6FFC07BE296D9E9B00E87E49 /* ConfirmationView.swift in Sources */,
+				6FFC07C2296DABF900E87E49 /* InsuredFlagView.swift in Sources */,
+				6FB43F70296E020A00BC5F57 /* DetailsView.swift in Sources */,
+				6FFC07AE296CEDD500E87E49 /* BtnTest.swift in Sources */,
+				6FFC07C8296DB3F400E87E49 /* NavBarButtonStyle.swift in Sources */,
+				6FFC07D3296DD29B00E87E49 /* PropertyRowCardView.swift in Sources */,
+				6FFC07D1296DCC0500E87E49 /* TextVacantRoundedView.swift in Sources */,
+				6FFC07B6296D013100E87E49 /* UserRegisterView.swift in Sources */,
+				6FFC078F296CE41F00E87E49 /* ContentView.swift in Sources */,
+				6FFC07D5296DD46200E87E49 /* VacantCapsuleView.swift in Sources */,
+				6FFC07B8296D03A100E87E49 /* MainTextfieldView.swift in Sources */,
+				6FFC07B2296CFC4300E87E49 /* MainButtonView.swift in Sources */,
+				6FFC078D296CE41F00E87E49 /* UIPractices_SewaaApp.swift in Sources */,
+				6FFC07CB296DB6DD00E87E49 /* DateRoundedView.swift in Sources */,
+				6FB43F6C296DF2FA00BC5F57 /* PropertyView.swift in Sources */,
+				6FFC07CF296DBE3000E87E49 /* RoundedCorner.swift in Sources */,
+				6FFC07BA296D06D000E87E49 /* MainTextfieldStyle.swift in Sources */,
+				6FFC07AC296CEB1D00E87E49 /* Constants.swift in Sources */,
+				6FFC07C0296DABAF00E87E49 /* PropertyImageCardView.swift in Sources */,
+				6FFC07BC296D9C1300E87E49 /* LoginView.swift in Sources */,
+				6FB43F72296E034E00BC5F57 /* DetailsImageCardView.swift in Sources */,
+				6FFC07B4296CFE1600E87E49 /* EntryView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6FFC0796296CE42100E87E49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6FFC0797296CE42100E87E49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		6FFC0799296CE42100E87E49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "UIPractices-Sewaa/UIPractices_Sewaa.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"UIPractices-Sewaa/Preview Content\"";
+				DEVELOPMENT_TEAM = K328B98U3F;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.studies.UIPractices-Sewaa";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		6FFC079A296CE42100E87E49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "UIPractices-Sewaa/UIPractices_Sewaa.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"UIPractices-Sewaa/Preview Content\"";
+				DEVELOPMENT_TEAM = K328B98U3F;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.studies.UIPractices-Sewaa";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6FFC0784296CE41F00E87E49 /* Build configuration list for PBXProject "UIPractices-Sewaa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FFC0796296CE42100E87E49 /* Debug */,
+				6FFC0797296CE42100E87E49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6FFC0798296CE42100E87E49 /* Build configuration list for PBXNativeTarget "UIPractices-Sewaa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FFC0799296CE42100E87E49 /* Debug */,
+				6FFC079A296CE42100E87E49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6FFC0781296CE41F00E87E49 /* Project object */;
+}
