@@ -9,12 +9,15 @@ import SwiftUI
 
 @main
 struct CripticApp: App {
+    @StateObject private var vm = HomeViewModel()
+    
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                HomeView()
+                HomeView(coin: Mocks.mockCoin)
                     .toolbar(.hidden)
             }
+            .environmentObject(vm)
         }
     }
 }

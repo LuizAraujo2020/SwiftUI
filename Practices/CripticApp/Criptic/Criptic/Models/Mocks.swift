@@ -1,5 +1,5 @@
 //
-//  PreviewProvider.swift
+//  Mocks.swift
 //  Criptic
 //
 //  Created by Luiz Araujo on 21/04/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension PreviewProvider {
+final class Mocks {
     static var mockCoin: CoinModel {
         CoinModel(
         id: "bitcoin",

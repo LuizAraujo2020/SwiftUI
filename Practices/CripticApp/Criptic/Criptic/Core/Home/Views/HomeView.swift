@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject vm: HomeViewModel
+    
     @State private var showPortfolio = false
+    
+    let coin: CoinModel
     
     var body: some View {
         ZStack {
@@ -20,6 +24,12 @@ struct HomeView: View {
             VStack {
                 homeHeader()
                 
+                List {
+                    CoinRowView(
+                        coin: coin,
+                        showHoldingsColumn: false)
+                }
+                .listStyle(.plain)
                 Spacer(minLength: 0)
             }
         }
@@ -62,8 +72,9 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         
         NavigationStack {
-            HomeView()
+            HomeView(coin: Mocks.mockCoin)
                 .toolbar(.hidden)
+                .environmentObject(HomeViewModel())
         }
     }
 }

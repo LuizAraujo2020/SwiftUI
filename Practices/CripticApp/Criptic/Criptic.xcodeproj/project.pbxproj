@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		6F3D460029F3578500BA6B4E /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3D45FF29F3578500BA6B4E /* Double.swift */; };
 		6FA0A8DF29F34C3C00AB899C /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0A8DE29F34C3C00AB899C /* CoinRowView.swift */; };
-		6FA0A8E129F34F9900AB899C /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0A8E029F34F9900AB899C /* PreviewProvider.swift */; };
+		6FA0A8E129F34F9900AB899C /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0A8E029F34F9900AB899C /* Mocks.swift */; };
+		6FAC780A29F4AF08001867CE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC780929F4AF08001867CE /* HomeViewModel.swift */; };
 		6FEF428129F20358002816BA /* CripticApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEF428029F20358002816BA /* CripticApp.swift */; };
 		6FEF428329F20358002816BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEF428229F20358002816BA /* ContentView.swift */; };
 		6FEF428529F2035A002816BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FEF428429F2035A002816BA /* Assets.xcassets */; };
@@ -45,7 +46,8 @@
 /* Begin PBXFileReference section */
 		6F3D45FF29F3578500BA6B4E /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		6FA0A8DE29F34C3C00AB899C /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
-		6FA0A8E029F34F9900AB899C /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
+		6FA0A8E029F34F9900AB899C /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		6FAC780929F4AF08001867CE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		6FEF427D29F20358002816BA /* Criptic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Criptic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FEF428029F20358002816BA /* CripticApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CripticApp.swift; sourceTree = "<group>"; };
 		6FEF428229F20358002816BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -154,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				6FEF42AE29F22C2D002816BA /* Color.swift */,
-				6FA0A8E029F34F9900AB899C /* PreviewProvider.swift */,
 				6F3D45FF29F3578500BA6B4E /* Double.swift */,
 			);
 			path = Extensions;
@@ -190,6 +191,7 @@
 		6FEF42B329F22E90002816BA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				6FAC780929F4AF08001867CE /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -214,6 +216,7 @@
 		6FEF42BC29F2E6CD002816BA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6FA0A8E029F34F9900AB899C /* Mocks.swift */,
 				6FEF42BD29F2E706002816BA /* CoinModel.swift */,
 				6FEF42C129F2E943002816BA /* coin.json */,
 			);
@@ -352,13 +355,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FA0A8DF29F34C3C00AB899C /* CoinRowView.swift in Sources */,
+				6FAC780A29F4AF08001867CE /* HomeViewModel.swift in Sources */,
 				6FEF428329F20358002816BA /* ContentView.swift in Sources */,
 				6FEF42B529F2309D002816BA /* HomeView.swift in Sources */,
 				6FEF428129F20358002816BA /* CripticApp.swift in Sources */,
 				6FEF42B929F231DA002816BA /* CircleButtonView.swift in Sources */,
 				6FEF42AF29F22C2D002816BA /* Color.swift in Sources */,
 				6FEF42BB29F2E0D9002816BA /* CircleButtonAnimationView.swift in Sources */,
-				6FA0A8E129F34F9900AB899C /* PreviewProvider.swift in Sources */,
+				6FA0A8E129F34F9900AB899C /* Mocks.swift in Sources */,
 				6F3D460029F3578500BA6B4E /* Double.swift in Sources */,
 				6FEF42BE29F2E706002816BA /* CoinModel.swift in Sources */,
 			);

@@ -78,6 +78,6 @@ extension CoinRowView {
 
 struct CoinRowView_Previews: PreviewProvider {
     static var previews: some View {
-        CoinRowView(coin: mockCoin, showHoldingsColumn: true)//.constant(true))
+        CoinRowView(coin: Mocks.mockCoin, showHoldingsColumn: true)//.constant(true))
     }
 }
