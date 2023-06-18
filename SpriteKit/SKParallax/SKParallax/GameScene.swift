@@ -10,46 +10,31 @@ import SpriteKit
 
 final class GameScene: SKScene, ObservableObject {
     
-    let player = SKSpriteNode(
-        color: .red,
-        size: CGSize(
-            width: 50,
-            height: 50))
-    
     override func didMove(to view: SKView) {
         self.size = UIScreen.main.bounds.size
         
         self.scene?.scaleMode = .fill
-        
         self.anchorPoint = .zero
         
-        self.player.position = CGPoint(
-            x: 0 + player.size.width * 0.5,
-            y: self.size.height - player.size.height * 0.5)
-//        self.player.setScale(0.35)
-        player.zPosition = 10
-        
-        self.addChild(player)
-        
+        // MARK: - PARALLAX
         moveBackground(image: "bg1",
                        y: 0,
                        z: -5,
-                       duration: 10,
+                       duration: 20,
                        needPhysics: false,
                        size: self.size)
         moveBackground(image: "bg2",
                        y: 0,
                        z: -2,
-                       duration: 5,
+                       duration: 15,
                        needPhysics: true,
                        size: CGSize(width: self.size.width, height: self.size.height))
         moveBackground(image: "bg3",
                        y: 0,
                        z: -1,
-                       duration: 1,
+                       duration: 10,
                        needPhysics: true,
                        size: CGSize(width: self.size.width, height: self.size.height))
-        
     }
     
     func moveBackground(image: String,
@@ -72,7 +57,7 @@ final class GameScene: SKScene, ObservableObject {
                 node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
                 node.physicsBody?.isDynamic = false
                 node.physicsBody?.contactTestBitMask = 1
-                node.name = "gegner"
+                node.name = "bg"
             }
             
             let move = SKAction.moveBy(x: -node.size.width,
