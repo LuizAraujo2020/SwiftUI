@@ -10,10 +10,16 @@ import SceneKit
 
 struct GameView: View {
     @ObservedObject var vm: GameViewModel
-    
+    @State private var pointOfView = "mainCamera"
+
     var body: some View {
         ZStack {
-            SceneView(scene: vm.scene)
+            SceneView(scene: vm.scene,
+                      pointOfView: vm.scene.rootNode.childNode(withName: pointOfView, recursively: true),
+                      options: [.allowsCameraControl,
+                                .autoenablesDefaultLighting
+                      ],
+            delegate: vm)
         }
         .ignoresSafeArea()
     }

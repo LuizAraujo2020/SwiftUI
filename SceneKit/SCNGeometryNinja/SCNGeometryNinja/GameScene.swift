@@ -21,7 +21,6 @@ final class GameScene: SCNScene {
     
     func setupScene() {
         self.background.contents = "GeometryFighter.scnassets/Textures/Background_Diffuse.png"
-        
     }
     
     private func setupCamera() {
