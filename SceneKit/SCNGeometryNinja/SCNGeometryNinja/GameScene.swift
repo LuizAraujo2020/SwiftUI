@@ -15,6 +15,8 @@ final class GameScene: SCNScene {
         
         setupScene()
         setupCamera()
+        
+        spawnShape()
     }
     
     func setupScene() {
@@ -30,6 +32,19 @@ final class GameScene: SCNScene {
             y: 0,
             z: 10)
         self.rootNode.addChildNode(cameraNode)
+    }
+    
+    private func spawnShape() {
+        var geometry: SCNGeometry
+        
+        switch ShapeType.random() {
+        default:
+            geometry = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+        }
+        
+        let node = SCNNode(geometry: geometry)
+        
+        self.rootNode.addChildNode(node)
     }
     
     required init?(coder: NSCoder) {
