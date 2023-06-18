@@ -11,6 +11,8 @@
 		6FB4E1F12A3E6B3200852ADF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4E1F02A3E6B3200852ADF /* ContentView.swift */; };
 		6FB4E1F32A3E6B3500852ADF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4E1F22A3E6B3500852ADF /* Assets.xcassets */; };
 		6FB4E1F62A3E6B3500852ADF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4E1F52A3E6B3500852ADF /* Preview Assets.xcassets */; };
+		6FB4E1FD2A3E70BA00852ADF /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4E1FC2A3E70BA00852ADF /* GameView.swift */; };
+		6FB4E1FF2A3E712B00852ADF /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4E1FE2A3E712B00852ADF /* GameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		6FB4E1F02A3E6B3200852ADF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6FB4E1F22A3E6B3500852ADF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6FB4E1F52A3E6B3500852ADF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6FB4E1FC2A3E70BA00852ADF /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		6FB4E1FE2A3E712B00852ADF /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			children = (
 				6FB4E1EE2A3E6B3200852ADF /* SKTappyBirdyApp.swift */,
 				6FB4E1F02A3E6B3200852ADF /* ContentView.swift */,
+				6FB4E1FC2A3E70BA00852ADF /* GameView.swift */,
+				6FB4E1FE2A3E712B00852ADF /* GameScene.swift */,
 				6FB4E1F22A3E6B3500852ADF /* Assets.xcassets */,
 				6FB4E1F42A3E6B3500852ADF /* Preview Content */,
 			);
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FB4E1F12A3E6B3200852ADF /* ContentView.swift in Sources */,
+				6FB4E1FD2A3E70BA00852ADF /* GameView.swift in Sources */,
+				6FB4E1FF2A3E712B00852ADF /* GameScene.swift in Sources */,
 				6FB4E1EF2A3E6B3200852ADF /* SKTappyBirdyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
