@@ -56,6 +56,8 @@ final class GameScene: SCNScene {
         }
         
         let node = SCNNode(geometry: geometry)
+        node.physicsBody = SCNPhysicsBody(type: .dynamic,
+                                          shape: nil)
         
         self.rootNode.addChildNode(node)
     }
