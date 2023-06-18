@@ -31,12 +31,24 @@ final class GameScene: SKScene, ObservableObject {
         
         self.addChild(player)
         
-//        moveBackground(image: <#T##String#>,
-//                       y: <#T##CGFloat#>,
-//                       z: <#T##CGFloat#>,
-//                       duration: <#T##Double#>,
-//                       needPhysics: <#T##Bool#>,
-//                       size: <#T##CGSize#>)
+        moveBackground(image: "bg1",
+                       y: 0,
+                       z: -5,
+                       duration: 10,
+                       needPhysics: false,
+                       size: self.size)
+        moveBackground(image: "bg2",
+                       y: 0,
+                       z: -2,
+                       duration: 5,
+                       needPhysics: true,
+                       size: CGSize(width: self.size.width, height: self.size.height))
+        moveBackground(image: "bg3",
+                       y: 0,
+                       z: -1,
+                       duration: 1,
+                       needPhysics: true,
+                       size: CGSize(width: self.size.width, height: self.size.height))
         
     }
     
