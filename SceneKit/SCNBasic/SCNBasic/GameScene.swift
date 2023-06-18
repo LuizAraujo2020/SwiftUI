@@ -33,11 +33,13 @@ final class GameScene: NSObject, SCNSceneRendererDelegate {
     
     private func setUpCamera() {
         
-        guard let cam = scene.rootNode.childNode(withName: "camera", recursively: false)
-        else { return }
+//        guard let cam = scene.rootNode.childNode(withName: "camera", recursively: false)
+//        else { return }
         
-        cameraNode = cam
-        cameraNode.position = SCNVector3(x: -3, y: 2, z: 3)
+        let cam = SCNCamera()
+        cameraNode = SCNNode()
+        cameraNode.camera = cam
+        cameraNode.position = SCNVector3(x: -3, y: 2, z: 15)
         
         let constraint = SCNLookAtConstraint(target: cubeNode)
         constraint.isGimbalLockEnabled = true

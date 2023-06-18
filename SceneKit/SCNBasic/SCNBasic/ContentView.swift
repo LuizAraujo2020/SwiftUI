@@ -13,7 +13,7 @@ struct ContentView: View {
     private let game = GameScene()
     
     var body: some View {
-        SceneView(scene: game.scene, options: [.allowsCameraControl]
+        SceneView(scene: game.scene//, options: [.allowsCameraControl]
         )
             .ignoresSafeArea()
     }
