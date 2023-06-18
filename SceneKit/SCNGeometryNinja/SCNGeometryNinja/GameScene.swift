@@ -8,19 +8,28 @@
 import SceneKit
 
 final class GameScene: SCNScene {
-    
+    var cameraNode: SCNNode!
+
     override init() {
         super.init()
         
+        setupScene()
+        setupCamera()
     }
-//    override convenience init() {
-//        self.init()
-//
-//        setupScene()
-//    }
     
     func setupScene() {
+        self.background.contents = "GeometryFighter.scnassets/Textures/Background_Diffuse.png"
         
+    }
+    
+    private func setupCamera() {
+        cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3(
+            x: 0,
+            y: 0,
+            z: 10)
+        self.rootNode.addChildNode(cameraNode)
     }
     
     required init?(coder: NSCoder) {

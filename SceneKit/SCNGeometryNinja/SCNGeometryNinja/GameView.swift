@@ -15,11 +15,13 @@ struct GameView: View {
         ZStack {
             SceneView(scene: vm.scene)
         }
+        .ignoresSafeArea()
     }
 }
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         GameView(vm: GameViewModel())
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }
