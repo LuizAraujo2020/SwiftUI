@@ -37,8 +37,22 @@ final class GameScene: SCNScene {
         var geometry: SCNGeometry
         
         switch ShapeType.random() {
-        default:
+        case .box:
             geometry = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+        case .capsule:
+            geometry = SCNCapsule(capRadius: 0.2, height: 1)
+        case .cone:
+            geometry = SCNCone(topRadius: 0.01, bottomRadius: 1, height: 1)
+        case .cylinder:
+            geometry = SCNCylinder(radius: 1, height: 1)
+        case .pyramid:
+            geometry = SCNPyramid(width: 1, height: 1, length: 1)
+        case .sphere:
+            geometry = SCNSphere(radius: 1)
+        case .torus:
+            geometry = SCNTorus(ringRadius: 1, pipeRadius: 1)
+        case .tube:
+            geometry = SCNTube(innerRadius: 1, outerRadius: 1, height: 1)
         }
         
         let node = SCNNode(geometry: geometry)
