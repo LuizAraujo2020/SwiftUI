@@ -6,21 +6,22 @@
 //
 
 import SwiftUI
+import SceneKit
 
 struct ContentView: View {
+    
+    private let game = GameScene()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        SceneView(scene: game.scene, options: [.allowsCameraControl]
+        )
+            .ignoresSafeArea()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }
