@@ -43,6 +43,8 @@ extension GameViewModel: SCNSceneRendererDelegate {
 
             scene.cleanScene()
         }
+
+        scene.game.updateHUD()
     }
 }
 

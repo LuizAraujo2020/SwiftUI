@@ -10,12 +10,15 @@ import SceneKit
 final class GameScene: SCNScene {
     var cameraNode: SCNNode!
     var spawnTime: TimeInterval = 0
+    var game = GameHelper.sharedInstance
 
     override init() {
         super.init()
         
         setupScene()
         setupCamera()
+        setupHUD()
+
     }
     
     func setupScene() {
@@ -97,6 +100,10 @@ final class GameScene: SCNScene {
       trail.emitterShape = geometry
       // 5. Finally, this returns the newly created particle system.
       return trail
+    }
+    func setupHUD() {
+      game.hudNode.position = SCNVector3(x: 0.0, y: 10.0, z: 0.0)
+        self.rootNode.addChildNode(game.hudNode)
     }
 
     
