@@ -52,8 +52,9 @@ final class GameScene: SCNScene {
             geometry = SCNTube(innerRadius: 1, outerRadius: 1, height: 1)
         }
 
-        geometry.materials.first?.diffuse.contents = UIColor.random()
-        
+        let color = UIColor.random()
+        geometry.materials.first?.diffuse.contents = color
+
         let node = SCNNode(geometry: geometry)
         node.physicsBody = SCNPhysicsBody(type: .dynamic,
                                           shape: nil)
@@ -68,6 +69,9 @@ final class GameScene: SCNScene {
         node.physicsBody?.applyForce(force,
           at: position, asImpulse: true)
 
+        let trailEmitter = createTrail(color: color, geometry: geometry)
+        node.addParticleSystem(trailEmitter)
+
         self.rootNode.addChildNode(node)
     }
 
@@ -81,6 +85,20 @@ final class GameScene: SCNScene {
         }
       }
     }
+
+    // 1. This defines createTrail(_: geometry:) which takes in color and geometry parameters to set up the particle system.
+    func createTrail(color: UIColor, geometry: SCNGeometry) ->
+      SCNParticleSystem {
+      // 2. This loads the particle system from the file you created earlier.
+      let trail = SCNParticleSystem(named: "Trail.scnp", inDirectory: nil)!
+      // 3. Here, you modify the particle’s tint color based on the parameter passed in.
+      trail.particleColor = color
+      // 4. This uses the geometry parameter to specify the emitter’s shape.
+      trail.emitterShape = geometry
+      // 5. Finally, this returns the newly created particle system.
+      return trail
+    }
+
     
     required init?(coder: NSCoder) { nil }
 }

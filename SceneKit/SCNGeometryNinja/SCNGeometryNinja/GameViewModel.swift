@@ -27,13 +27,13 @@ extension GameViewModel: SCNSceneRendererDelegate {
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         renderer.isPlaying = true
 
-#if DEBUG
-        renderer.showsStatistics = self.showsStatistics
-        renderer.debugOptions = self.debugOptions
-#else
-        renderer.showsStatistics = false
-        renderer.debugOptions = []
-#endif
+//#if DEBUG
+//        renderer.showsStatistics = self.showsStatistics
+//        renderer.debugOptions = self.debugOptions
+//#else
+//        renderer.showsStatistics = false
+//        renderer.debugOptions = []
+//#endif
         // 1. You check if time (the current system time) is greater than spawnTime. If so, spawn a new shape; otherwise, do nothing.
         if time > scene.spawnTime {
             scene.spawnShape()
