@@ -26,10 +26,8 @@ final class GameScene: SCNScene {
     private func setupCamera() {
         cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(
-            x: 0,
-            y: 0,
-            z: 10)
+        cameraNode.position = SCNVector3(x: 0, y: 5, z: 10)
+
         self.rootNode.addChildNode(cameraNode)
     }
     
@@ -69,7 +67,6 @@ final class GameScene: SCNScene {
         node.physicsBody?.applyForce(force,
           at: position, asImpulse: true)
 
-        
         self.rootNode.addChildNode(node)
     }
     

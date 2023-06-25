@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var gameViewModel = GameViewModel()
     
-    @State private var showLaunchScreen = true
+    @State private var showLaunchScreen = false
     
     var body: some View {
         ZStack {

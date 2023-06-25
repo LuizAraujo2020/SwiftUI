@@ -29,3 +29,7 @@ public extension Double {
   }
 }
 
+enum DAsd {
+    case asdd
+    case erfv
+}
