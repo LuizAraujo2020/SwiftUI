@@ -75,6 +75,12 @@ final class GameScene: SCNScene {
         let trailEmitter = createTrail(color: color, geometry: geometry)
         node.addParticleSystem(trailEmitter)
 
+        if color == UIColor.black {
+            node.name = "BAD"
+        } else {
+            node.name = "GOOD"
+        }
+
         self.rootNode.addChildNode(node)
     }
 
