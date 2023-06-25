@@ -25,9 +25,11 @@ final class GameViewModel: NSObject, ObservableObject {
 
 extension GameViewModel: SCNSceneRendererDelegate {
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        renderer.isPlaying = true
+        
 #if DEBUG
         renderer.showsStatistics = self.showsStatistics
-            renderer.debugOptions = self.debugOptions
+        renderer.debugOptions = self.debugOptions
 #else
         renderer.showsStatistics = false
         renderer.debugOptions = []
@@ -38,6 +40,8 @@ extension GameViewModel: SCNSceneRendererDelegate {
 
             // 2. After you spawn an object, update spawnTime with the next time to spawn a new object. The next spawn time is simply the current time incremented by a random amount. Since TimeInterval is in seconds, you spawn the next object between 0.2 seconds and 1.5 seconds after the current time.
             scene.spawnTime = time + TimeInterval(Float.random(min: 0.2, max: 1.5))
+
+            scene.cleanScene()
         }
     }
 }

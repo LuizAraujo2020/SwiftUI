@@ -39,7 +39,7 @@ final class GameScene: SCNScene {
         case .capsule:
             geometry = SCNCapsule(capRadius: 0.2, height: 1)
         case .cone:
-            geometry = SCNCone(topRadius: 0.01, bottomRadius: 1, height: 1)
+            geometry = SCNCone(topRadius: 0.0, bottomRadius: 1, height: 1)
         case .cylinder:
             geometry = SCNCylinder(radius: 1, height: 1)
         case .pyramid:
@@ -70,8 +70,17 @@ final class GameScene: SCNScene {
 
         self.rootNode.addChildNode(node)
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+
+    func cleanScene() {
+      // 1
+      for node in self.rootNode.childNodes {
+        // 2
+        if node.presentation.position.y < -2 {
+          // 3
+          node.removeFromParentNode()
+        }
+      }
     }
+    
+    required init?(coder: NSCoder) { nil }
 }
