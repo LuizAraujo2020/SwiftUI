@@ -26,7 +26,7 @@ final class GameViewModel: NSObject, ObservableObject {
 extension GameViewModel: SCNSceneRendererDelegate {
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         renderer.isPlaying = true
-        
+
 #if DEBUG
         renderer.showsStatistics = self.showsStatistics
         renderer.debugOptions = self.debugOptions

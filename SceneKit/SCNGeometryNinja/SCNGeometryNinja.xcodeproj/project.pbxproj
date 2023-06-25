@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F8FC8812A48906A00E602BE /* Trail.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 6F8FC8802A48906A00E602BE /* Trail.scnp */; };
 		6FA31A982A3F3836008B0EFB /* SCNGeometryNinjaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA31A972A3F3836008B0EFB /* SCNGeometryNinjaApp.swift */; };
 		6FA31A9A2A3F3836008B0EFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA31A992A3F3836008B0EFB /* ContentView.swift */; };
 		6FA31A9C2A3F3838008B0EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FA31A9B2A3F3838008B0EFB /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F8FC8802A48906A00E602BE /* Trail.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = Trail.scnp; sourceTree = "<group>"; };
 		6FA31A942A3F3836008B0EFB /* SCNGeometryNinja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCNGeometryNinja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FA31A972A3F3836008B0EFB /* SCNGeometryNinjaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNGeometryNinjaApp.swift; sourceTree = "<group>"; };
 		6FA31A992A3F3836008B0EFB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +60,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F8FC87F2A488F4600E602BE /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				6F8FC8802A48906A00E602BE /* Trail.scnp */,
+			);
+			path = Particles;
+			sourceTree = "<group>";
+		};
 		6FA31A8B2A3F3836008B0EFB = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +88,7 @@
 		6FA31A962A3F3836008B0EFB /* SCNGeometryNinja */ = {
 			isa = PBXGroup;
 			children = (
+				6F8FC87F2A488F4600E602BE /* Particles */,
 				6FA31A972A3F3836008B0EFB /* SCNGeometryNinjaApp.swift */,
 				6FA31A992A3F3836008B0EFB /* ContentView.swift */,
 				6FA31AA72A3F3B9E008B0EFB /* GameView.swift */,
@@ -172,6 +183,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F8FC8812A48906A00E602BE /* Trail.scnp in Resources */,
 				6FA31A9F2A3F3838008B0EFB /* Preview Assets.xcassets in Resources */,
 				6FA31AB02A3F404F008B0EFB /* Thumb.gif in Resources */,
 				6FA31A9C2A3F3838008B0EFB /* Assets.xcassets in Resources */,
