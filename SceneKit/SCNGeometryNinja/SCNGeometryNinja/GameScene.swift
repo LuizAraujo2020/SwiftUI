@@ -37,22 +37,22 @@ final class GameScene: SCNScene {
         var geometry: SCNGeometry
         
         switch ShapeType.random() {
-        case .box:
-            geometry = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
-        case .capsule:
-            geometry = SCNCapsule(capRadius: 0.2, height: 1)
-        case .cone:
-            geometry = SCNCone(topRadius: 0.0, bottomRadius: 1, height: 1)
-        case .cylinder:
-            geometry = SCNCylinder(radius: 1, height: 1)
-        case .pyramid:
-            geometry = SCNPyramid(width: 1, height: 1, length: 1)
-        case .sphere:
-            geometry = SCNSphere(radius: 1)
-        case .torus:
-            geometry = SCNTorus(ringRadius: 1, pipeRadius: 1)
-        case .tube:
-            geometry = SCNTube(innerRadius: 1, outerRadius: 1, height: 1)
+            case .box:
+                geometry = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+            case .capsule:
+                geometry = SCNCapsule(capRadius: 0.2, height: 1)
+            case .cone:
+                geometry = SCNCone(topRadius: 0.0, bottomRadius: 1, height: 1)
+            case .cylinder:
+                geometry = SCNCylinder(radius: 1, height: 1)
+            case .pyramid:
+                geometry = SCNPyramid(width: 1, height: 1, length: 1)
+            case .sphere:
+                geometry = SCNSphere(radius: 1)
+            case .torus:
+                geometry = SCNTorus(ringRadius: 1, pipeRadius: 1)
+            case .tube:
+                geometry = SCNTube(innerRadius: 1, outerRadius: 1, height: 1)
         }
 
         let color = UIColor.random()
@@ -70,7 +70,7 @@ final class GameScene: SCNScene {
         let position = SCNVector3(x: 0.05, y: 0.05, z: 0.05)
 
         node.physicsBody?.applyForce(force,
-          at: position, asImpulse: true)
+                                     at: position, asImpulse: true)
 
         let trailEmitter = createTrail(color: color, geometry: geometry)
         node.addParticleSystem(trailEmitter)
@@ -85,33 +85,43 @@ final class GameScene: SCNScene {
     }
 
     func cleanScene() {
-      // 1
-      for node in self.rootNode.childNodes {
-        // 2
-        if node.presentation.position.y < -2 {
-          // 3
-          node.removeFromParentNode()
+        // 1
+        for node in self.rootNode.childNodes {
+            // 2
+            if node.presentation.position.y < -2 {
+                // 3
+                node.removeFromParentNode()
+            }
         }
-      }
     }
 
     // 1. This defines createTrail(_: geometry:) which takes in color and geometry parameters to set up the particle system.
     func createTrail(color: UIColor, geometry: SCNGeometry) ->
-      SCNParticleSystem {
-      // 2. This loads the particle system from the file you created earlier.
-      let trail = SCNParticleSystem(named: "Trail.scnp", inDirectory: nil)!
-      // 3. Here, you modify the particle’s tint color based on the parameter passed in.
-      trail.particleColor = color
-      // 4. This uses the geometry parameter to specify the emitter’s shape.
-      trail.emitterShape = geometry
-      // 5. Finally, this returns the newly created particle system.
-      return trail
+    SCNParticleSystem {
+        // 2. This loads the particle system from the file you created earlier.
+        let trail = SCNParticleSystem(named: "Trail.scnp", inDirectory: nil)!
+        // 3. Here, you modify the particle’s tint color based on the parameter passed in.
+        trail.particleColor = color
+        // 4. This uses the geometry parameter to specify the emitter’s shape.
+        trail.emitterShape = geometry
+        // 5. Finally, this returns the newly created particle system.
+        return trail
     }
     func setupHUD() {
-      game.hudNode.position = SCNVector3(x: 0.0, y: 10.0, z: 0.0)
+        game.hudNode.position = SCNVector3(x: 0.0, y: 10.0, z: 0.0)
         self.rootNode.addChildNode(game.hudNode)
     }
 
-    
+    func handleTouchFor(node: SCNNode) {
+        if node.name == "GOOD" {
+            game.score += 1
+
+        } else if node.name == "BAD" {
+            game.lives -= 1
+        }
+        
+        node.removeFromParentNode()
+    }
+
     required init?(coder: NSCoder) { nil }
 }
