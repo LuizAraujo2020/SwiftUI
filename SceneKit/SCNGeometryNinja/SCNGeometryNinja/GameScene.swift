@@ -9,14 +9,13 @@ import SceneKit
 
 final class GameScene: SCNScene {
     var cameraNode: SCNNode!
+    var spawnTime: TimeInterval = 0
 
     override init() {
         super.init()
         
         setupScene()
         setupCamera()
-        
-        spawnShape()
     }
     
     func setupScene() {
@@ -30,8 +29,8 @@ final class GameScene: SCNScene {
 
         self.rootNode.addChildNode(cameraNode)
     }
-    
-    private func spawnShape() {
+
+    func spawnShape() {
         var geometry: SCNGeometry
         
         switch ShapeType.random() {
@@ -52,6 +51,8 @@ final class GameScene: SCNScene {
         case .tube:
             geometry = SCNTube(innerRadius: 1, outerRadius: 1, height: 1)
         }
+
+        geometry.materials.first?.diffuse.contents = UIColor.random()
         
         let node = SCNNode(geometry: geometry)
         node.physicsBody = SCNPhysicsBody(type: .dynamic,
