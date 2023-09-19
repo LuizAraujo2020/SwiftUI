@@ -33,7 +33,8 @@ struct RatesFluctuationView: View {
     var body: some View {
         NavigationView {
             VStack {
-
+                baseCurrencyPeriodFilterView()
+                ratesFluctuationListView()
             }
             .background(.red)
             .searchable(text: $searchText)
@@ -66,7 +67,49 @@ struct RatesFluctuationView: View {
                 }
                 .background(Color(UIColor.lightGray))
                 .cornerRadius(8)
+
+                filterButton("1 dia") {}
+                filterButton("7 dias") {}
+                filterButton("1 mês") {}
+                filterButton("6 meses") {}
+                filterButton("1 ano") {}
         }
+    }
+
+    @ViewBuilder
+    private func filterButton(_ text: String, action: () -> Void) -> some View {
+        Button {
+            print(text)
+            action()
+        } label: {
+            Text(text)
+                .font(.system(size: 14, weight: .bold))
+                .foregroundColor(.gray)
+        }
+    }
+
+    @ViewBuilder
+    private func ratesFluctuationListView() -> some View {
+        List(viewModel.fluctuations) { fluctuation in
+            VStack {
+                HStack {
+                    Text("\(fluctuation.symbol) / BRL")
+                        .font((.system(size: 14, weight: .medium)))
+
+                    Text("\(fluctuation.endRate)")
+                        .font((.system(size: 14, weight: .bold)))
+
+                    Text("\(fluctuation.change)")
+                        .font((.system(size: 14, weight: .bold)))
+
+                    Text("\(fluctuation.changePct)")
+                        .font((.system(size: 14, weight: .bold)))
+                }
+            }
+            .listRowSeparator(.hidden)
+            .listRowBackground(Color.white)
+        }
+        .listStyle(.plain)
     }
 }
 

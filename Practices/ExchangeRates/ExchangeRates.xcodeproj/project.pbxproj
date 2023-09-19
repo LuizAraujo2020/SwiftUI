@@ -25,6 +25,7 @@
 		6FA35C0A2AB7591C009194EE /* CurrencySymbolsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA35C092AB7591C009194EE /* CurrencySymbolsObject.swift */; };
 		6FA35C0C2AB7595E009194EE /* RatesHistoricalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA35C0B2AB7595E009194EE /* RatesHistoricalObject.swift */; };
 		6FA35C0E2AB76E39009194EE /* RateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA35C0D2AB76E39009194EE /* RateStore.swift */; };
+		6FA502632AB9BA2E00AB221A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA502622AB9BA2E00AB221A /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		6FA35C092AB7591C009194EE /* CurrencySymbolsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySymbolsObject.swift; sourceTree = "<group>"; };
 		6FA35C0B2AB7595E009194EE /* RatesHistoricalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesHistoricalObject.swift; sourceTree = "<group>"; };
 		6FA35C0D2AB76E39009194EE /* RateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateStore.swift; sourceTree = "<group>"; };
+		6FA502622AB9BA2E00AB221A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				6FA35BE92AB72BF8009194EE /* ExchangeRatesApp.swift */,
 				6FA35BED2AB72BF9009194EE /* Assets.xcassets */,
 				6FA35BEF2AB72BF9009194EE /* Preview Content */,
+				6FA502622AB9BA2E00AB221A /* Extensions.swift */,
 			);
 			path = ExchangeRates;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				6FA35C082AB754D1009194EE /* RatesFluctuationObject.swift in Sources */,
 				6FA35BFC2AB72EB9009194EE /* RatesAPI.swift in Sources */,
 				6F3C81E62AB93FE300E8DBA4 /* RatesFluctuationView.swift in Sources */,
+				6FA502632AB9BA2E00AB221A /* Extensions.swift in Sources */,
 				6F3C81DF2AB937FF00E8DBA4 /* RatesFluctuationDataProvider.swift in Sources */,
 				6F3C81DA2AB9325400E8DBA4 /* CurrencyStore.swift in Sources */,
 			);
