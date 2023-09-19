@@ -30,10 +30,10 @@ class BaseStore {
         }
     }
 
-    struct SymbolResult<Rates: Codable>: Codable {
+    struct SymbolResult: Codable {
         var base: String?
         var success: Bool = false
-        var symbols: CurrencySymbolsObject
+        var symbols: CurrencySymbolsObject?
 
         init(data: Data?, response: URLResponse?) throws {
             guard let data = data, let response = response as? HTTPURLResponse
