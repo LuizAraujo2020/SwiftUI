@@ -5,9 +5,18 @@
 //  Created by Luiz Araujo on 19/09/23.
 //
 
-import Foundation
+import SwiftUI
 
 extension Double {
+
+    var color: Color {
+        if self.sign == .minus {
+            return .red
+        } else {
+            return .green
+        }
+    }
+
     func formatter(decimalPlaces: Int, with changeSymbol: Bool = false) -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
@@ -19,7 +28,9 @@ extension Double {
         guard let value = numberFormatter.string(from: NSNumber(value: self)) else { return String(self) }
 
         if changeSymbol {
-            if self.sign == .plus {
+            if self.sign == .minus {
+                return "\(value)"
+            } else {
                 return "+\(value)"
             }
         }

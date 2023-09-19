@@ -30,13 +30,25 @@ class FluctuationViewModel: ObservableObject {
 struct RatesFluctuationView: View {
     @StateObject var viewModel = FluctuationViewModel()
     @State var searchText = ""
+
+    var searchResult: [Fluctuation] {
+        if searchText.isEmpty {
+            return viewModel.fluctuations
+        } else {
+            return viewModel.fluctuations.filter {
+                $0.symbol.contains(searchText.uppercased()) ||
+                $0.endRate.formatter(decimalPlaces: 2).contains(searchText.uppercased()) ||
+                $0.change.formatter(decimalPlaces: 4).contains(searchText.uppercased()) ||
+                $0.changePct.formatter(decimalPlaces: 2).contains(searchText.uppercased())
+            }
+        }
+    }
     var body: some View {
         NavigationView {
             VStack {
                 baseCurrencyPeriodFilterView()
                 ratesFluctuationListView()
             }
-            .background(.red)
             .searchable(text: $searchText)
             .navigationTitle("Conversão de Moedas")
             .navigationBarTitleDisplayMode(.inline)
@@ -52,7 +64,7 @@ struct RatesFluctuationView: View {
 
     @ViewBuilder
     private func baseCurrencyPeriodFilterView() -> some View {
-            VStack {
+            HStack {
                 Button {
                     print("Filtrar moeda base")
                 } label: {
@@ -77,7 +89,7 @@ struct RatesFluctuationView: View {
     }
 
     @ViewBuilder
-    private func filterButton(_ text: String, action: () -> Void) -> some View {
+    private func filterButton(_ text: String, action: @escaping () -> Void) -> some View {
         Button {
             print(text)
             action()
@@ -90,21 +102,27 @@ struct RatesFluctuationView: View {
 
     @ViewBuilder
     private func ratesFluctuationListView() -> some View {
-        List(viewModel.fluctuations) { fluctuation in
+        List(searchResult) { fluctuation in
             VStack {
-                HStack {
+                HStack(alignment: .center, spacing: 8) {
                     Text("\(fluctuation.symbol) / BRL")
                         .font((.system(size: 14, weight: .medium)))
 
-                    Text("\(fluctuation.endRate)")
+                    Text(fluctuation.endRate.formatter(decimalPlaces: 2))
                         .font((.system(size: 14, weight: .bold)))
+                        .frame(maxWidth: .infinity, alignment: .trailing)
 
-                    Text("\(fluctuation.change)")
+                    Text(fluctuation.change.formatter(decimalPlaces: 4, with: true))
                         .font((.system(size: 14, weight: .bold)))
+                        .foregroundColor(fluctuation.change.color)
 
-                    Text("\(fluctuation.changePct)")
+                    Text(fluctuation.changePct.toPercentage())
                         .font((.system(size: 14, weight: .bold)))
+                        .foregroundColor(fluctuation.changePct.color)
                 }
+                Divider()
+                    .padding(.leading, -20)
+                    .padding(.trailing, -40)
             }
             .listRowSeparator(.hidden)
             .listRowBackground(Color.white)
