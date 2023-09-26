@@ -52,3 +52,12 @@ extension Double {
         return "\(value)%"
     }
 }
+
+
+extension String {
+    func toDate(dateFormat: String = "yyyy-MM-dd") -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormat
+        return dateFormatter.date(from: self) ?? Date()
+    }
+}
