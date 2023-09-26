@@ -63,12 +63,71 @@ class RateFluctuationViewModel: ObservableObject {
 }
 
 struct RatesFluctuationDetailView: View {
-    
+    @State var baseCurrency: String
+    @State var rateFluctuation: Fluctuation
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView(showsIndicators: false) {
+            valuesView()
+            chartView()
+        }
+        .navigationTitle("BRL a EUR")
+    }
+
+    @ViewBuilder
+    private func valuesView() -> some View {
+        HStack(spacing: 8) {
+            Text(rateFluctuation.endRate.formatter(decimalPlaces: 4))
+                .font(.system(size: 28, weight: .bold))
+
+            Text(rateFluctuation.changePct.toPercentage(with: true))
+                .font(.system(size: 18, weight: .semibold))
+                .foregroundStyle(rateFluctuation.changePct.color)
+                .background(rateFluctuation.changePct.color.opacity(0.2))
+
+            Text(rateFluctuation.change.formatter(decimalPlaces: 4, with: true))
+                .font(.system(size: 18, weight: .semibold))
+                .foregroundStyle(rateFluctuation.changePct.color)
+
+            Spacer()
+        }
+        .padding(8)
+    }
+
+    @ViewBuilder
+    private func chartView() -> some View {
+        VStack {
+            periodoFilterView()
+        }
+    }
+
+    @ViewBuilder
+    private func periodoFilterView() -> some View {
+        HStack(spacing: 16) {
+            Button {
+                print("Filtrar moeda base")
+            } label: {
+                Text("BRL")
+                    .font(.system(size: 14, weight: .bold))
+                    .padding(.init(top: 4, leading: 8, bottom: 4, trailing: 8))
+                    .foregroundColor(.white)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(.white, lineWidth: 1)
+                    )
+            }
+            .background(Color(UIColor.lightGray))
+            .cornerRadius(8)
+
+            filterButton("1 dia") {}
+            filterButton("7 dias") {}
+            filterButton("1 mês") {}
+            filterButton("6 meses") {}
+            filterButton("1 ano") {}
+        }
     }
 }
 
 #Preview {
-    RatesFluctuationDetailView()
+    RatesFluctuationDetailView(baseCurrency: "BRL", rateFluctuation: .init(symbol: "EUR", change: 0.000_3, changePct: 0.1651, endRate: 0.181353))
 }
