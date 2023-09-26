@@ -72,7 +72,9 @@ struct RatesFluctuationDetailView: View {
         ScrollView(showsIndicators: false) {
             valuesView()
             graphicChartView()
+            comparationView()
         }
+        .padding(.horizontal, 8)
         .navigationTitle("BRL a EUR")
     }
 
@@ -175,8 +177,65 @@ struct RatesFluctuationDetailView: View {
         }
         .chartYScale(domain: viewModel.yAxisMin...viewModel.yAxisMax)
         .frame(height: 260)
-        .padding(.trailing, 22)
-        .padding(.leading, 8)
+        .padding(.trailing, 18)
+    }
+
+    @ViewBuilder
+    private func comparationView() -> some View {
+        VStack(spacing: 8) {
+            comparationButtonView()
+            comparationScrollView()
+        }
+        .padding(.vertical, 8)
+    }
+
+    @ViewBuilder
+    private func comparationButtonView() -> some View {
+        Button {
+            print("Comparar com")
+        } label: {
+            Image(systemName: "magnifyingglass")
+            Text("Comparar com")
+                .font(.system(size: 16))
+        }
+    }
+
+    @ViewBuilder
+    private func comparationScrollView() -> some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            LazyHGrid(rows: [GridItem(.flexible())], alignment: .center) {
+                ForEach(viewModel.fluctuations) { fluctuation in
+                    Button {
+                        print("Comparacao")
+                    } label: {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("\(fluctuation.symbol) / \(baseCurrency)")
+                                .font(.system(size: 14))
+                                .foregroundStyle(Color.black)
+                            Text(fluctuation.endRate.formatter(decimalPlaces: 4))
+                                .font(.system(size: 14, weight: .semibold))
+                                .foregroundStyle(Color.black)
+
+                            HStack(alignment: .bottom, spacing: 60) {
+                                Text(fluctuation.symbol)
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundStyle(Color.gray)
+                                Text(fluctuation.changePct.toPercentage())
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundStyle(fluctuation.changePct.color)
+                                    .frame(width: .infinity, alignment: .trailing)
+                            }
+                        }
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 16)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(.gray, lineWidth: 1)
+                        )
+                    }
+                }
+            }
+        }
     }
 }
 
