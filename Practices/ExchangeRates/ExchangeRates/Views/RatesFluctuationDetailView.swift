@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct ChartComparation: Identifiable, Equatable {
     let id = UUID()
@@ -63,13 +64,14 @@ class RateFluctuationViewModel: ObservableObject {
 }
 
 struct RatesFluctuationDetailView: View {
+    @StateObject var viewModel = RateFluctuationViewModel()
     @State var baseCurrency: String
     @State var rateFluctuation: Fluctuation
 
     var body: some View {
         ScrollView(showsIndicators: false) {
             valuesView()
-            chartView()
+            graphicChartView()
         }
         .navigationTitle("BRL a EUR")
     }
@@ -95,9 +97,10 @@ struct RatesFluctuationDetailView: View {
     }
 
     @ViewBuilder
-    private func chartView() -> some View {
+    private func graphicChartView() -> some View {
         VStack {
             periodoFilterView()
+            lineChartView()
         }
     }
 
@@ -125,6 +128,42 @@ struct RatesFluctuationDetailView: View {
             filterButton("6 meses") {}
             filterButton("1 ano") {}
         }
+    }
+
+    @ViewBuilder
+    private func filterButton(_ text: String, action: @escaping () -> Void) -> some View {
+        Button {
+            print(text)
+            action()
+        } label: {
+            Text(text)
+                .font(.system(size: 14, weight: .bold))
+                .foregroundColor(.gray)
+        }
+    }
+
+    @ViewBuilder
+    private func lineChartView() -> some View {
+        Chart(viewModel.chartComparations) { item in
+            LineMark(
+                x: .value("Period", item.period),
+                y: .value("Rates", item.endRate))
+        }
+        .chartXAxis {
+            AxisMarks(preset: .aligned) { date in
+                AxisGridLine()
+                AxisValueLabel(viewModel.xAxisLabelFormatStyle(for: date.as(Date.self) ?? Date()))
+            }
+        }
+        .chartYAxis {
+            AxisMarks(position: .leading) { rate in
+                AxisGridLine()
+                AxisValueLabel(rate.as(Double.self)?.formatter(decimalPlaces: 3) ?? 0.0.formatter(decimalPlaces: 3))
+            }
+        }
+        .chartYScale(domain: viewModel.yAxisMin...viewModel.yAxisMax)
+        .frame(height: 260)
+        .padding(.trailing, 22)
     }
 }
 
