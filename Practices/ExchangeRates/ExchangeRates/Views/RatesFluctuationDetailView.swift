@@ -102,6 +102,7 @@ struct RatesFluctuationDetailView: View {
             periodoFilterView()
             lineChartView()
         }
+        .padding(.vertical, 8)
     }
 
     @ViewBuilder
@@ -148,6 +149,17 @@ struct RatesFluctuationDetailView: View {
             LineMark(
                 x: .value("Period", item.period),
                 y: .value("Rates", item.endRate))
+            .interpolationMethod(.catmullRom)
+
+            if !viewModel.hasRates {
+                RuleMark(y: .value("Conversão Zero", 0))
+                    .annotation(position: .overlay, alignment: .center) {
+                        Text("Sem valores nesse período")
+                            .font(.footnote)
+                            .padding()
+                            .background(Color(UIColor.systemBackground))
+                    }
+            }
         }
         .chartXAxis {
             AxisMarks(preset: .aligned) { date in
@@ -164,6 +176,7 @@ struct RatesFluctuationDetailView: View {
         .chartYScale(domain: viewModel.yAxisMin...viewModel.yAxisMax)
         .frame(height: 260)
         .padding(.trailing, 22)
+        .padding(.leading, 8)
     }
 }
 
