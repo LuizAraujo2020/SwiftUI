@@ -23,14 +23,15 @@ extension Fluctuation {
     ]
 }
 
-class FluctuationViewModel: ObservableObject {
+class RatesFluctuationViewModel: ObservableObject {
     @Published var fluctuations: [Fluctuation] = Fluctuation.samples
 }
 
 struct RatesFluctuationView: View {
-    @StateObject var viewModel = FluctuationViewModel()
+    @StateObject var viewModel = RatesFluctuationViewModel()
     @State private var searchText = ""
     @State private var isPresentedBaseCurrencyFilter = false
+    @State private var isPresentedMultiCurrenciesFilter = false
 
     var searchResult: [Fluctuation] {
         if searchText.isEmpty {
@@ -55,10 +56,13 @@ struct RatesFluctuationView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 Button {
-                    print("Filter moedas")
+                    isPresentedMultiCurrenciesFilter.toggle()
                 } label: {
                     Image(systemName: "slider.horizontal.3")
                 }
+                .fullScreenCover(isPresented: $isPresentedMultiCurrenciesFilter, content: {
+                    MultiCurrenciesSelectionFilterView()
+                })
             }
         }
     }
