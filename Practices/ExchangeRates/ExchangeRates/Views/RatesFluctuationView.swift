@@ -7,33 +7,18 @@
 
 import SwiftUI
 
-struct Fluctuation: Identifiable, Equatable {
-    let id = UUID()
-    let symbol: String
-    let change: Double
-    let changePct: Double
-    var endRate: Double
-}
 
-extension Fluctuation {
-    static let samples = [
-        Fluctuation(symbol: "USD", change: 0.0008, changePct: 0.4175, endRate: 0.18857),
-        Fluctuation(symbol: "EUR", change: 0.0003, changePct: 0.1651, endRate: 0.181353),
-        Fluctuation(symbol: "GBP", change: -0.0001, changePct: -0.0403, endRate: 0.158915)
-    ]
-}
-
-class RatesFluctuationViewModel: ObservableObject {
-    @Published var fluctuations: [Fluctuation] = Fluctuation.samples
+class FluctuationViewModel: ObservableObject {
+    @Published var fluctuations: [RateFluctuationModel] = RateFluctuationModel.samples
 }
 
 struct RatesFluctuationView: View {
-    @StateObject var viewModel = RatesFluctuationViewModel()
+    @StateObject var viewModel = FluctuationViewModel()
     @State private var searchText = ""
     @State private var isPresentedBaseCurrencyFilter = false
     @State private var isPresentedMultiCurrenciesFilter = false
 
-    var searchResult: [Fluctuation] {
+    var searchResult: [RateFluctuationModel] {
         if searchText.isEmpty {
             return viewModel.fluctuations
         } else {

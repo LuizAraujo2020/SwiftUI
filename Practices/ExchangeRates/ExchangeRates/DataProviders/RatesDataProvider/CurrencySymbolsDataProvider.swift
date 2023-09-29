@@ -8,21 +8,23 @@
 import Foundation
 
 protocol CurrencySymbolsDataProviderDelegate: DataProviderManagerDelegate {
-    func success(model: CurrencySymbolsObject)
+    func success(model: [CurrencySymbolModel])
 }
 
-class CurrencySymbolsDataProvider: DataProviderManager<CurrencySymbolsDataProviderDelegate, CurrencySymbolsObject> {
+class CurrencySymbolsDataProvider: DataProviderManager<CurrencySymbolsDataProviderDelegate, [CurrencySymbolModel]> {
     private let currencyStore: CurrencyStore
 
     init(currencyStore: CurrencyStore = CurrencyStore()) {
         self.currencyStore = currencyStore
     }
 
-    func fetchSymbols(by base: String, from symbols: [String], startDate: String, endDate: String) {
+    func fetchSymbols() {
         Task.init {
             do {
-                let model = try await currencyStore.fetchSymbols()
-                delegate?.success(model: model)
+                let object = try await currencyStore.fetchSymbols()
+                delegate?.success(model: object.map({ (key, value) -> CurrencySymbolModel in
+                    return CurrencySymbolModel(symbol: key, fullName: value)
+                }))
             } catch {
                 delegate?.errorData(delegate, error: error)
             }

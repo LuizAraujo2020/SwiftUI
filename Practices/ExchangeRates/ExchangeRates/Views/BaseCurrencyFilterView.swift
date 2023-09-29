@@ -7,35 +7,19 @@
 
 import SwiftUI
 
-struct Symbol: Identifiable, Equatable {
-    let id = UUID()
-    var symbol: String
-    var fullName: String
-}
-
-class BaseCurrencyFilterViewModel: ObservableObject {
-    @Published var symbols: [Symbol] = [
-        Symbol(symbol: "BRL", fullName: "Brazilian Real"),
-        Symbol(symbol: "EUR", fullName: "Euro"),
-        Symbol(symbol: "GBP", fullName: "British Pound Sterling"),
-        Symbol(symbol: "JPY", fullName: "Japanese Yen"),
-        Symbol(symbol: "USD", fullName: "United States Dollar")
-    ]
-}
-
 struct BaseCurrencyFilterView: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject var viewModel = BaseCurrencyFilterViewModel()
+    @StateObject var viewModel = ViewModel()
 
     @State private var selection: String?
     @State private var searchText = ""
 
-    var searchResult: [Symbol] {
+    var searchResult: [CurrencySymbolModel] {
         if searchText.isEmpty {
-            return viewModel.symbols
+            return viewModel.currencySymbols
         } else {
-            return viewModel.symbols.filter {
-                $0.symbol.uppercased().contains(searchText.uppercased()) ||
+            return viewModel.currencySymbols.filter {
+                $0.symbol.contains(searchText.uppercased()) ||
                 $0.fullName.uppercased().contains(searchText.uppercased())
             }
         }
@@ -44,6 +28,10 @@ struct BaseCurrencyFilterView: View {
     var body: some View {
         NavigationView {
             listCurrenciesView()
+        }
+        .onAppear {
+            viewModel.doFetchCurrencySymbols()
+            print(viewModel.currencySymbols)
         }
     }
 
@@ -66,7 +54,7 @@ struct BaseCurrencyFilterView: View {
     }
 
     @ViewBuilder
-    private func symbolView(_ symbol: Symbol) -> some View {
+    private func symbolView(_ symbol: CurrencySymbolModel) -> some View {
         HStack {
             Text(symbol.symbol)
                 .fontWeight(.bold)

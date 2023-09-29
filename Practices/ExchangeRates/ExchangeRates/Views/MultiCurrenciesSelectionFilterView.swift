@@ -7,16 +7,6 @@
 
 import SwiftUI
 
-class CurrencySelectionFilterViewModel: ObservableObject {
-    @Published var symbols: [Symbol] = [
-        Symbol(symbol: "BRL", fullName: "Brazilian Real"),
-        Symbol(symbol: "EUR", fullName: "Euro"),
-        Symbol(symbol: "GBP", fullName: "British Pound Sterling"),
-        Symbol(symbol: "JPY", fullName: "Japanese Yen"),
-        Symbol(symbol: "USD", fullName: "United States Dollar")
-    ]
-}
-
 struct MultiCurrenciesSelectionFilterView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel = CurrencySelectionFilterViewModel()
@@ -24,7 +14,7 @@ struct MultiCurrenciesSelectionFilterView: View {
     @State private var searchText = ""
     @State private var selections = [String]()
 
-    var searchResult: [Symbol] {
+    var searchResult: [CurrencySymbolModel] {
         if searchText.isEmpty {
             return viewModel.symbols
         } else {
@@ -74,7 +64,7 @@ struct MultiCurrenciesSelectionFilterView: View {
     }
 
     @ViewBuilder
-    private func symbolView(_ symbol: Symbol) -> some View {
+    private func symbolView(_ symbol: CurrencySymbolModel) -> some View {
         HStack {
             Text(symbol.symbol)
                 .fontWeight(.bold)
