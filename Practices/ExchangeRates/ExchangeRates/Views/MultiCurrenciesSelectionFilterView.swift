@@ -9,16 +9,16 @@ import SwiftUI
 
 struct MultiCurrenciesSelectionFilterView: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject var viewModel = CurrencySelectionFilterViewModel()
+    @StateObject var viewModel = ViewModel()
 
     @State private var searchText = ""
     @State private var selections = [String]()
 
     var searchResult: [CurrencySymbolModel] {
         if searchText.isEmpty {
-            return viewModel.symbols
+            return viewModel.currencySymbols
         } else {
-            return viewModel.symbols.filter {
+            return viewModel.currencySymbols.filter {
                 $0.symbol.uppercased().contains(searchText.uppercased()) ||
                 $0.fullName.uppercased().contains(searchText.uppercased())
             }
@@ -28,6 +28,10 @@ struct MultiCurrenciesSelectionFilterView: View {
     var body: some View {
         NavigationView {
             listCurrenciesView()
+        }
+        .onAppear {
+            viewModel.doFetchCurrencySymbols()
+            print(viewModel.currencySymbols)
         }
     }
 

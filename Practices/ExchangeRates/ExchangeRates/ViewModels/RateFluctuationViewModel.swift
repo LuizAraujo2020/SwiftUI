@@ -7,6 +7,12 @@
 
 import Foundation
 
+extension RatesFluctuationView {
+    @MainActor class ViewModel: ObservableObject {
+        @Published var ratesFluctuations = [RateFluctuationModel]()
+    }
+}
+
 class RateFluctuationViewModel: ObservableObject {
 
     @Published var fluctuations: [RateFluctuationModel] = [
