@@ -1,5 +1,5 @@
 //
-//  MultiCurrenciesSelectionFilterView.swift
+//  MultiCurrenciesFilterView.swift
 //  ExchangeRates
 //
 //  Created by Luiz Araujo on 27/09/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MultiCurrenciesSelectionFilterView: View {
+struct MultiCurrenciesFilterView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel = ViewModel()
 
@@ -80,5 +80,5 @@ struct MultiCurrenciesSelectionFilterView: View {
 }
 
 #Preview {
-    MultiCurrenciesSelectionFilterView()
+    MultiCurrenciesFilterView()
 }

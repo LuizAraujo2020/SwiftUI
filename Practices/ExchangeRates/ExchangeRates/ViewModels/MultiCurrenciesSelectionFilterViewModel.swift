@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension MultiCurrenciesSelectionFilterView {
+extension MultiCurrenciesFilterView {
     @MainActor class ViewModel: ObservableObject, CurrencySymbolsDataProviderDelegate {
         @Published var currencySymbols = [CurrencySymbolModel]()
 

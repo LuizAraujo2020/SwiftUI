@@ -71,6 +71,10 @@ extension Date {
         dateFormatter.locale = Locale(identifier: "pt_BR_POSIX")
         return dateFormatter.string(from: self)
     }
+
+    func toString(dateFormat: String = "yyyy-MM-dd") -> String {
+        return formatter(to: dateFormat)
+    }
 }
 
 extension UINavigationController {

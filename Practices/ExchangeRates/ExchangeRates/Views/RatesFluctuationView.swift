@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RatesFluctuationView: View {
     @StateObject var viewModel = ViewModel()
+    
     @State private var searchText = ""
     @State private var isPresentedBaseCurrencyFilter = false
     @State private var isPresentedMultiCurrenciesFilter = false
@@ -41,9 +42,12 @@ struct RatesFluctuationView: View {
                     Image(systemName: "slider.horizontal.3")
                 }
                 .fullScreenCover(isPresented: $isPresentedMultiCurrenciesFilter, content: {
-                    MultiCurrenciesSelectionFilterView()
+                    MultiCurrenciesFilterView()
                 })
             }
+        }
+        .onAppear {
+            viewModel.doFetchRatesFluctuation(timeRange: .today)
         }
     }
 
