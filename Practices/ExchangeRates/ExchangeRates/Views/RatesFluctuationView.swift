@@ -10,6 +10,7 @@ import SwiftUI
 struct RatesFluctuationView: View {
     @StateObject var viewModel = ViewModel()
     
+    @State private var viewDidLoad = true
     @State private var searchText = ""
     @State private var isPresentedBaseCurrencyFilter = false
     @State private var isPresentedMultiCurrenciesFilter = false
@@ -42,12 +43,15 @@ struct RatesFluctuationView: View {
                     Image(systemName: "slider.horizontal.3")
                 }
                 .fullScreenCover(isPresented: $isPresentedMultiCurrenciesFilter, content: {
-                    MultiCurrenciesFilterView()
+                    MultiCurrenciesFilterView(delegate: self)
                 })
             }
         }
         .onAppear {
-            viewModel.doFetchRatesFluctuation(timeRange: .today)
+            if viewDidLoad {
+                viewDidLoad.toggle()
+                viewModel.doFetchRatesFluctuation(timeRange: .today)
+            }
         }
     }
 
@@ -57,7 +61,7 @@ struct RatesFluctuationView: View {
             Button {
                 isPresentedBaseCurrencyFilter.toggle()
             } label: {
-                Text("BRL")
+                Text(viewModel.baseCurrency)
                     .font(.system(size: 14, weight: .bold))
                     .padding(.init(top: 4, leading: 8, bottom: 4, trailing: 8))
                     .foregroundColor(.white)
@@ -67,16 +71,32 @@ struct RatesFluctuationView: View {
                     )
             }
             .fullScreenCover(isPresented: $isPresentedBaseCurrencyFilter, content: {
-                BaseCurrencyFilterView()
+                BaseCurrencyFilterView(delegate: self)
             })
             .background(Color(UIColor.lightGray))
             .cornerRadius(8)
             
-            filterButton("1 dia") {}
+            filterButton("1 dia") {
+                viewModel.doFetchRatesFluctuation(timeRange: .today)
+            }
+            .foregroundStyle(viewModel.timeRange == .today ? .blue :.gray)
+            .underline(viewModel.timeRange == .today)
+
             filterButton("7 dias") {}
+                .foregroundStyle(viewModel.timeRange == .thisWeek ? .blue :.gray)
+                .underline(viewModel.timeRange == .thisWeek)
+
             filterButton("1 mês") {}
+                .foregroundStyle(viewModel.timeRange == .thisMonth ? .blue :.gray)
+                .underline(viewModel.timeRange == .thisMonth)
+
             filterButton("6 meses") {}
+                .foregroundStyle(viewModel.timeRange == .thisSemester ? .blue :.gray)
+                .underline(viewModel.timeRange == .thisSemester)
+
             filterButton("1 ano") {}
+                .foregroundStyle(viewModel.timeRange == .thisYear ? .blue :.gray)
+                .underline(viewModel.timeRange == .thisYear)
         }
     }
 
@@ -124,6 +144,20 @@ struct RatesFluctuationView: View {
             .listRowBackground(Color.white)
         }
         .listStyle(.plain)
+    }
+}
+
+extension RatesFluctuationView: BaseCurrencyFilterViewDelegate {
+    func didSelected(_ baseCurrency: String) {
+        viewModel.baseCurrency = baseCurrency
+        viewModel.doFetchRatesFluctuation(timeRange: .today)
+    }
+}
+
+extension RatesFluctuationView: MultiCurrenciesFilterViewDelegate {
+    func didSelected(_ currencies: [String]) {
+        viewModel.currencies = currencies
+        viewModel.doFetchRatesFluctuation(timeRange: .today)
     }
 }
 
