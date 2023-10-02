@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct RatesFluctuationDetailView: View {
-    @StateObject var viewModel = RateFluctuationViewModel()
+    @StateObject var viewModel = ViewModel()
     @State var baseCurrency: String
     @State var rateFluctuation: RateFluctuationModel
 

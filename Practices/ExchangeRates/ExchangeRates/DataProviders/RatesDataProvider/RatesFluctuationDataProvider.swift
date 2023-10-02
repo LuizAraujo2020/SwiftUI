@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol RatesFluctuationProviderDelegate: DataProviderManagerDelegate {
+protocol RatesFluctuationDataProviderDelegate: DataProviderManagerDelegate {
     func success(model: [RateFluctuationModel])
 }
 
-class RatesFluctuationDataProvider: DataProviderManager<RatesFluctuationProviderDelegate, RateFluctuationModel> {
+class RatesFluctuationDataProvider: DataProviderManager<RatesFluctuationDataProviderDelegate, RateFluctuationModel> {
     private let ratesStore: RatesStore
 
     init(ratesStore: RatesStore = RatesStore()) {

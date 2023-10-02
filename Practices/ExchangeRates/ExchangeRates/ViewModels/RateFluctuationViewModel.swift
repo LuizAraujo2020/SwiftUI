@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension RatesFluctuationView {
-    @MainActor class ViewModel: ObservableObject, RatesFluctuationProviderDelegate {
+    @MainActor class ViewModel: ObservableObject, RatesFluctuationDataProviderDelegate {
 
         @Published var ratesFluctuations = [RateFluctuationModel]()
         @Published var timeRange = TimeRangeEnum.today
