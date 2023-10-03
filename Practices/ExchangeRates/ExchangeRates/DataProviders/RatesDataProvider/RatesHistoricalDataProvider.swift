@@ -18,10 +18,10 @@ class RatesHistoricalDataProvider: DataProviderManager<RatesHistoricalDataProvid
         self.ratesStore = ratesStore
     }
 
-    func fetchTimeSeries(by base: String, from symbols: [String], startDate: String, endDate: String) {
+    func fetchTimeSeries(by base: String, from symbol: String, startDate: String, endDate: String) {
         Task.init {
             do {
-                let object = try await ratesStore.fetchTimeSeries(by: base, from: symbols, startDate: startDate, endDate: endDate)
+                let object = try await ratesStore.fetchTimeSeries(by: base, from: symbol, startDate: startDate, endDate: endDate)
                 delegate?.success(model: object.flatMap({ (period, rates) -> [RateHistoricalModel] in
                     return rates.map { RateHistoricalModel(symbol: $0, period: period.toDate(), endRate: $1) }
                 }))

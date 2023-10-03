@@ -9,18 +9,18 @@ import SwiftUI
 
 extension RatesFluctuationDetailView {
     @MainActor class ViewModel: ObservableObject, RatesFluctuationDataProviderDelegate, RatesHistoricalDataProviderDelegate {
-        
+
         @Published var ratesFluctuation = [RateFluctuationModel]()
         @Published var ratesHistorical = [RateHistoricalModel]()
         @Published var timeRange = TimeRangeEnum.today
-        @Published var baseCUrrency: String?
+        @Published var baseCurrency: String?
         @Published var rateFluctuation: RateFluctuationModel?
 
         private var fluctuationDataProvider: RatesFluctuationDataProvider?
         private var historicalDataProvider: RatesHistoricalDataProvider?
 
         var title: String {
-            return "\(baseCUrrency ?? "") a \(symbol)"
+            return "\(baseCurrency ?? "") a \(symbol)"
         }
         var symbol: String {
             return rateFluctuation?.symbol ?? ""
@@ -61,24 +61,15 @@ extension RatesFluctuationDetailView {
             return (max + (max * 0.02))
         }
 
-        func xAxisLabelFormatStyle(for date: Date) -> String {
-            switch timeRange {
-                case .today: return date.formatter(to: "HH:mm")
-                case .thisWeek, .thisMonth: return date.formatter(to: "dd, MM")
-                case .thisSemester: return date.formatter(to: "MMM")
-                case .thisYear: return date.formatter(to: "MMM, YYYY")
-            }
-        }
-
-//        func addFluctuation(fluctuation: RateFluctuationModel) {
-//            ratesHistorical.insert(fluctuation, at: 0)
-//        }
-//
-//        func removeFluctuation(fluctuation: RateFluctuationModel) {
-//            if let index = fluctuations.firstIndex(of: fluctuation) {
-//                ratesHistorical.remove(at: index)
-//            }
-//        }
+        //        func addFluctuation(fluctuation: RateFluctuationModel) {
+        //            ratesHistorical.insert(fluctuation, at: 0)
+        //        }
+        //
+        //        func removeFluctuation(fluctuation: RateFluctuationModel) {
+        //            if let index = fluctuations.firstIndex(of: fluctuation) {
+        //                ratesHistorical.remove(at: index)
+        //            }
+        //        }
 
         init(fluctuationDataProvider: RatesFluctuationDataProvider = RatesFluctuationDataProvider(),
              historicalDataProvider: RatesHistoricalDataProvider = RatesHistoricalDataProvider()
@@ -89,17 +80,71 @@ extension RatesFluctuationDetailView {
             self.fluctuationDataProvider?.delegate = self
             self.historicalDataProvider?.delegate = self
         }
-    }
 
-    nonisolated func success(model: [RateFluctuationModel]) {
-        DispatchQueue.main.async {
-            self.rateFluctuation = model. fil
+        func xAxisLabelFormatStyle(for date: Date) -> String {
+            switch timeRange {
+                case .today: return date.formatter(to: "HH:mm")
+                case .thisWeek, .thisMonth: return date.formatter(to: "dd, MM")
+                case .thisSemester: return date.formatter(to: "MMM")
+                case .thisYear: return date.formatter(to: "MMM, YYYY")
+            }
         }
-    }
 
-    nonisolated func success(model: [RateHistoricalModel]) {
-        DispatchQueue.main.async {
-            self.RateHistoricalModel = model
+        func startStateView(baseCurrency: String, rateFluctuation: RateFluctuationModel, timeRange: TimeRangeEnum) {
+            self.baseCurrency = baseCurrency
+            self.rateFluctuation = rateFluctuation
+            doFetchData(from: timeRange)
+        }
+
+        func doFetchData(from timeRange: TimeRangeEnum) {
+            ratesFluctuation.removeAll()
+            ratesHistorical.removeAll()
+
+            withAnimation {
+                self.timeRange = timeRange
+            }
+
+            doFetchRatesFluctuation()
+            doFetchRatesHistorical(by: symbol)
+        }
+
+        private func doFetchRatesFluctuation() {
+            if let baseCurrency {
+                let startDate = timeRange.date
+                let endDate = Date()
+                fluctuationDataProvider?.fetchFluctuation(
+                    by: baseCurrency, 
+                    from: [],
+                    startDate: startDate.toString(),
+                    endDate: endDate.toString())
+            }
+        }
+
+        private func doFetchRatesHistorical(by currency: String) {
+            if let baseCurrency {
+                let startDate = timeRange.date
+                let endDate = Date()
+                historicalDataProvider?.fetchTimeSeries(
+                    by: baseCurrency, 
+                    from: currency,
+                    startDate: startDate.toString(),
+                    endDate: endDate.toString())
+            }
+        }
+
+        nonisolated func success(model: [RateFluctuationModel]) {
+            DispatchQueue.main.async {
+                self.rateFluctuation = model.filter({ $0.symbol == self.symbol }).first
+                self.ratesFluctuation = model.filter({ $0.symbol != self.baseCurrency }).sorted { $0.symbol < $1.symbol }
+            }
+        }
+
+        nonisolated func success(model: [RateHistoricalModel]) {
+            DispatchQueue.main.async {
+                DispatchQueue.main.async {
+                    self.ratesHistorical = model.sorted { $0.period > $1.period }
+                }
+            }
         }
     }
 }

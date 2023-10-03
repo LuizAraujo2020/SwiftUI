@@ -23,23 +23,30 @@ struct RatesFluctuationDetailView: View {
             comparationView()
         }
         .padding(.horizontal, 8)
-        .navigationTitle("BRL a EUR")
+        .navigationTitle(viewModel.title)
+
+        .onAppear {
+            viewModel.startStateView(
+                baseCurrency: baseCurrency,
+                rateFluctuation: rateFluctuation,
+                timeRange: .today)
+        }
     }
 
     @ViewBuilder
     private func valuesView() -> some View {
         HStack(spacing: 8) {
-            Text(rateFluctuation.endRate.formatter(decimalPlaces: 4))
+            Text(viewModel.endRate.formatter(decimalPlaces: 4))
                 .font(.system(size: 28, weight: .bold))
 
-            Text(rateFluctuation.changePct.toPercentage(with: true))
+            Text(viewModel.changePct.toPercentage(with: true))
                 .font(.system(size: 18, weight: .semibold))
-                .foregroundStyle(rateFluctuation.changePct.color)
-                .background(rateFluctuation.changePct.color.opacity(0.2))
+                .foregroundStyle(viewModel.changePct.color)
+                .background(viewModel.changePct.color.opacity(0.2))
 
-            Text(rateFluctuation.change.formatter(decimalPlaces: 4, with: true))
+            Text(viewModel.change.formatter(decimalPlaces: 4, with: true))
                 .font(.system(size: 18, weight: .semibold))
-                .foregroundStyle(rateFluctuation.changePct.color)
+                .foregroundStyle(viewModel.changePct.color)
 
             Spacer()
         }
@@ -95,7 +102,7 @@ struct RatesFluctuationDetailView: View {
 
     @ViewBuilder
     private func lineChartView() -> some View {
-        Chart(viewModel.chartComparations) { item in
+        Chart($viewModel.chartComparations) { item in
             LineMark(
                 x: .value("Period", item.period),
                 y: .value("Rates", item.endRate))
