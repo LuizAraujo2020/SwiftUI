@@ -115,11 +115,11 @@ struct RatesFluctuationView: View {
     private func ratesFluctuationListView() -> some View {
         List(searchResult) { fluctuation in
             NavigationLink {
-                RatesFluctuationDetailView(baseCurrency: "BRL", rateFluctuation: fluctuation)
+                RatesFluctuationDetailView(baseCurrency: viewModel.baseCurrency, rateFluctuation: fluctuation)
             } label: {
                 VStack {
                     HStack(alignment: .center, spacing: 8) {
-                        Text("\(fluctuation.symbol) / BRL")
+                        Text("\(fluctuation.symbol) / \(viewModel.baseCurrency)")
                             .font((.system(size: 14, weight: .medium)))
 
                         Text(fluctuation.endRate.formatter(decimalPlaces: 2))

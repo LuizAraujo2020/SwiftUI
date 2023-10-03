@@ -140,6 +140,18 @@ extension RatesFluctuationDetailView {
             }
         }
 
+        func doComparation(with rateFluctuation: RateFluctuationModel) {
+            self.rateFluctuation = rateFluctuation
+            doFetchRatesHistorical(by: rateFluctuation.symbol)
+        }
+
+        func doFilter(by currency: String) {
+            if let rateFluctuation = ratesFluctuation.filter({ $0.symbol == currency }).first {
+                self.rateFluctuation = rateFluctuation
+                doFetchRatesHistorical(by: rateFluctuation.symbol)
+            }
+        }
+
         nonisolated func success(model: [RateFluctuationModel]) {
             DispatchQueue.main.async {
                 self.rateFluctuation = model.filter({ $0.symbol == self.symbol }).first

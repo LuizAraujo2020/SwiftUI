@@ -165,7 +165,7 @@ struct RatesFluctuationDetailView: View {
                 .font(.system(size: 16))
         }
         .fullScreenCover(isPresented: $isPresentedBaseCurrencyFilter, content: {
-            BaseCurrencyFilterView()
+            BaseCurrencyFilterView(delegate: self)
         })
         .opacity(viewModel.ratesFluctuation.count == 0 ? 0.0 : 1.0)
     }
@@ -174,9 +174,9 @@ struct RatesFluctuationDetailView: View {
     private func comparationScrollView() -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHGrid(rows: [GridItem(.flexible())], alignment: .center) {
-                ForEach(viewModel.fluctuations) { fluctuation in
+                ForEach(viewModel.ratesFluctuation) { fluctuation in
                     Button {
-                        print("Comparacao")
+                        viewModel.doComparation(with: fluctuation)
                     } label: {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("\(fluctuation.symbol) / \(baseCurrency)")
@@ -206,6 +206,12 @@ struct RatesFluctuationDetailView: View {
                 }
             }
         }
+    }
+}
+
+extension RatesFluctuationDetailView: BaseCurrencyFilterViewDelegate {
+    func didSelected(_ baseCurrency: String) {
+        viewModel.doFilter(by: baseCurrency)
     }
 }
 
