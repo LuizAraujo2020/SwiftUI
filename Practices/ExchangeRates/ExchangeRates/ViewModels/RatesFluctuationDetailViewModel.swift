@@ -61,15 +61,23 @@ extension RatesFluctuationDetailView {
             return (max + (max * 0.02))
         }
 
-        //        func addFluctuation(fluctuation: RateFluctuationModel) {
-        //            ratesHistorical.insert(fluctuation, at: 0)
-        //        }
-        //
-        //        func removeFluctuation(fluctuation: RateFluctuationModel) {
-        //            if let index = fluctuations.firstIndex(of: fluctuation) {
-        //                ratesHistorical.remove(at: index)
-        //            }
-        //        }
+        var xAxisStride: Calendar.Component {
+            switch timeRange {
+                case .today: return .hour
+                case .thisWeek, .thisMonth: return .day
+                case .thisSemester, .thisYear: return .month
+            }
+        }
+
+        var xAxisStrideCount: Int {
+            switch timeRange {
+                case .today: return 6
+                case .thisWeek: return 2
+                case .thisMonth: return 6
+                case .thisSemester: return 2
+                case .thisYear: return 3
+            }
+        }
 
         init(fluctuationDataProvider: RatesFluctuationDataProvider = RatesFluctuationDataProvider(),
              historicalDataProvider: RatesHistoricalDataProvider = RatesHistoricalDataProvider()

@@ -75,40 +75,39 @@ struct RatesFluctuationView: View {
             })
             .background(Color(UIColor.lightGray))
             .cornerRadius(8)
-            
-            filterButton("1 dia") {
+
+            filterButton("1 dia", .today) {
                 viewModel.doFetchRatesFluctuation(timeRange: .today)
             }
-            .foregroundStyle(viewModel.timeRange == .today ? .blue :.gray)
-            .underline(viewModel.timeRange == .today)
 
-            filterButton("7 dias") {}
-                .foregroundStyle(viewModel.timeRange == .thisWeek ? .blue :.gray)
-                .underline(viewModel.timeRange == .thisWeek)
+            filterButton("7 dias", .thisWeek) {
+                viewModel.doFetchRatesFluctuation(timeRange: .thisWeek)
+            }
 
-            filterButton("1 mês") {}
-                .foregroundStyle(viewModel.timeRange == .thisMonth ? .blue :.gray)
-                .underline(viewModel.timeRange == .thisMonth)
+            filterButton("1 mês", .thisMonth) {
+                viewModel.doFetchRatesFluctuation(timeRange: .thisMonth)
+            }
 
-            filterButton("6 meses") {}
-                .foregroundStyle(viewModel.timeRange == .thisSemester ? .blue :.gray)
-                .underline(viewModel.timeRange == .thisSemester)
+            filterButton("6 meses", .thisSemester) {
+                viewModel.doFetchRatesFluctuation(timeRange: .thisSemester)
+            }
 
-            filterButton("1 ano") {}
-                .foregroundStyle(viewModel.timeRange == .thisYear ? .blue :.gray)
-                .underline(viewModel.timeRange == .thisYear)
+            filterButton("1 ano", .thisYear) {
+                viewModel.doFetchRatesFluctuation(timeRange: .thisYear)
+            }
         }
     }
 
     @ViewBuilder
-    private func filterButton(_ text: String, action: @escaping () -> Void) -> some View {
+    private func filterButton(_ text: String, _ timeRange: TimeRangeEnum, action: @escaping () -> Void) -> some View {
         Button {
             print(text)
             action()
         } label: {
             Text(text)
                 .font(.system(size: 14, weight: .bold))
-                .foregroundColor(.gray)
+                .foregroundColor(viewModel.timeRange == timeRange ? .blue : .gray)
+                .underline(viewModel.timeRange == timeRange)
         }
     }
 

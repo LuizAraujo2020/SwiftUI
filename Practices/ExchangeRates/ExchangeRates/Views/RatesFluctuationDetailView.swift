@@ -44,7 +44,7 @@ struct RatesFluctuationDetailView: View {
                 .foregroundStyle(viewModel.changePct.color)
                 .background(viewModel.changePct.color.opacity(0.2))
 
-            Text(viewModel.change.formatter(decimalPlaces: 4, with: true))
+            Text(viewModel.changeDescription)
                 .font(.system(size: 18, weight: .semibold))
                 .foregroundStyle(viewModel.changePct.color)
 
@@ -80,29 +80,40 @@ struct RatesFluctuationDetailView: View {
             .background(Color(UIColor.lightGray))
             .cornerRadius(8)
 
-            filterButton("1 dia") {}
-            filterButton("7 dias") {}
-            filterButton("1 mês") {}
-            filterButton("6 meses") {}
-            filterButton("1 ano") {}
+            filterButton("1 dia", .today) {
+                viewModel.doFetchData(from: .today)
+            }
+            filterButton("7 dias", .thisWeek) {
+                viewModel.doFetchData(from: .thisWeek)
+            }
+            filterButton("1 mês", .thisMonth) {
+                viewModel.doFetchData(from: .thisMonth)
+            }
+            filterButton("6 meses", .thisSemester) {
+                viewModel.doFetchData(from: .thisSemester)
+            }
+            filterButton("1 ano", .thisYear) {
+                viewModel.doFetchData(from: .thisYear)
+            }
         }
     }
 
     @ViewBuilder
-    private func filterButton(_ text: String, action: @escaping () -> Void) -> some View {
+    private func filterButton(_ text: String, _ timeRange: TimeRangeEnum, action: @escaping () -> Void) -> some View {
         Button {
             print(text)
             action()
         } label: {
             Text(text)
                 .font(.system(size: 14, weight: .bold))
-                .foregroundColor(.gray)
+                .foregroundColor(viewModel.timeRange == timeRange ? .blue : .gray)
+                .underline(viewModel.timeRange == timeRange)
         }
     }
 
     @ViewBuilder
     private func lineChartView() -> some View {
-        Chart($viewModel.chartComparations) { item in
+        Chart(viewModel.ratesHistorical) { item in
             LineMark(
                 x: .value("Period", item.period),
                 y: .value("Rates", item.endRate))
@@ -119,7 +130,7 @@ struct RatesFluctuationDetailView: View {
             }
         }
         .chartXAxis {
-            AxisMarks(preset: .aligned) { date in
+            AxisMarks(preset: .aligned, values: .stride(by: viewModel.xAxisStride, count: viewModel.xAxisStrideCount)) { date in
                 AxisGridLine()
                 AxisValueLabel(viewModel.xAxisLabelFormatStyle(for: date.as(Date.self) ?? Date()))
             }
@@ -156,6 +167,7 @@ struct RatesFluctuationDetailView: View {
         .fullScreenCover(isPresented: $isPresentedBaseCurrencyFilter, content: {
             BaseCurrencyFilterView()
         })
+        .opacity(viewModel.ratesFluctuation.count == 0 ? 0.0 : 1.0)
     }
 
     @ViewBuilder
