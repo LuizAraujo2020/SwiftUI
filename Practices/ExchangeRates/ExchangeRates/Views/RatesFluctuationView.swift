@@ -15,25 +15,32 @@ struct RatesFluctuationView: View {
     @State private var isPresentedBaseCurrencyFilter = false
     @State private var isPresentedMultiCurrenciesFilter = false
 
-    var searchResult: [RateFluctuationModel] {
-        if searchText.isEmpty {
-            return viewModel.ratesFluctuations
-        } else {
-            return viewModel.ratesFluctuations.filter {
-                $0.symbol.contains(searchText.uppercased()) ||
-                $0.endRate.formatter(decimalPlaces: 2).contains(searchText.uppercased()) ||
-                $0.change.formatter(decimalPlaces: 4).contains(searchText.uppercased()) ||
-                $0.changePct.formatter(decimalPlaces: 2).contains(searchText.uppercased())
-            }
-        }
-    }
     var body: some View {
         NavigationView {
             VStack {
-                baseCurrencyPeriodFilterView()
-                ratesFluctuationListView()
+                if case .loading = viewModel.currentState {
+                    ProgressView()
+                        .scaleEffect(2.2, anchor: .center)
+                } else if case .success = viewModel.currentState {
+                    baseCurrencyPeriodFilterView()
+                    ratesFluctuationListView()
+                } else if case .success = viewModel.currentState {
+                    errorView()
+                }
             }
-            .searchable(text: $searchText)
+            .searchable(text: $searchText, prompt: "Procurar moedas")
+            .onChange(of: searchText) { searchText in
+                if searchText.isEmpty {
+                    viewModel.searchResults = viewModel.ratesFluctuations
+                } else {
+                    viewModel.searchResults = viewModel.ratesFluctuations.filter {
+                        $0.symbol.contains(searchText.uppercased()) ||
+                        $0.change.formatter(decimalPlaces: 6).contains(searchText) ||
+                        $0.changePct.formatter(decimalPlaces: 6).contains(searchText)
+                        $0.endRate.formatter(decimalPlaces: 6).contains(searchText) ||
+                    }
+                }
+            }
             .navigationTitle("Conversão de Moedas")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
@@ -113,7 +120,7 @@ struct RatesFluctuationView: View {
 
     @ViewBuilder
     private func ratesFluctuationListView() -> some View {
-        List(searchResult) { fluctuation in
+        List(viewModel.searchResults) { fluctuation in
             NavigationLink {
                 RatesFluctuationDetailView(baseCurrency: viewModel.baseCurrency, rateFluctuation: fluctuation)
             } label: {
@@ -143,6 +150,32 @@ struct RatesFluctuationView: View {
             .listRowBackground(Color.white)
         }
         .listStyle(.plain)
+    }
+
+    @ViewBuilder
+    private func errorView() -> some View {
+        VStack {
+            Spacer()
+
+            Image(systemName: "wifi.exclamationmark")
+                .resizable()
+                .frame(width: 60, height: 44)
+                .padding(.bottom, 4)
+
+            Text("Ocorrey um erro na busca da flutuação de taxas!")
+                .font(.headline.bold())
+                .multilineTextAlignment(.center)
+
+            Button {
+                viewModel.doFetchRatesFluctuation(timeRange: .today)
+            } label: {
+                Text("Tentar novamente")
+            }
+            .padding(.top, 4)
+
+            Spacer()
+        }
+        .padding()
     }
 }
 

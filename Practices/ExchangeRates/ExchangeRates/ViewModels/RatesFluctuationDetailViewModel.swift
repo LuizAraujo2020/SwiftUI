@@ -135,7 +135,10 @@ extension RatesFluctuationDetailView {
                     startDate: startDate,
                     endDate: endDate)
                 .sink(receiveCompletion: { completion in
-                    <#code#>
+                    switch completion {
+                        case .finished: self.currentState = .success
+                        case .failure(_): print("Failure")
+                    }
                 }, receiveValue: { ratesFluctuation in
                     self.rateFluctuation = ratesFluctuation.filter({ $0.symbol == self.fromCurrency }).first
                     self.ratesFluctuation = ratesFluctuation.filter({ $0.symbol != self.baseCurrency && $0.symbol != self.fromCurrency }).sorted { $0.symbol < $1.symbol }
@@ -143,17 +146,20 @@ extension RatesFluctuationDetailView {
             }
         }
 
-        private func doFetchRatesHistorical(by currency: String) {
-            if let baseCurrency {
+        private func doFetchRatesHistorical() {
+            if let baseCurrency, let fromCurrency {
                 let startDate = timeRange.date.toString()
                 let endDate = Date().toString()
                 historicalDataProvider?.fetchTimeSeries(
                     by: baseCurrency, 
-                    from: currency,
+                    from: fromCurrency,
                     startDate: startDate,
                     endDate: endDate)
-                .sink(receiveCompletion: { <#Subscribers.Completion<Error>#> in
-                    <#code#>
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                        case .finished: self.currentState = .success
+                        case .failure(_): print("Failure")
+                    }
                 }, receiveValue: { ratesHistorical in
                     self.ratesHistorical = ratesHistorical.sorted { $0.period > $1.period }
                 }).store(in: &cancellables)
@@ -163,14 +169,14 @@ extension RatesFluctuationDetailView {
         func doComparation(with rateFluctuation: RateFluctuationModel) {
             self.fromCurrency = rateFluctuation.symbol
             self.rateFluctuation = rateFluctuation
-            doFetchRatesHistorical(by: rateFluctuation.symbol)
+            doFetchRatesHistorical()
         }
 
         func doFilter(by currency: String) {
             if let rateFluctuation = ratesFluctuation.filter({ $0.symbol == currency }).first {
                 self.fromCurrency = rateFluctuation.symbol
                 self.rateFluctuation = rateFluctuation
-                doFetchRatesHistorical(by: rateFluctuation.symbol)
+                doFetchRatesHistorical()
             }
         }
     }
