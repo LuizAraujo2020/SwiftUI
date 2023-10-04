@@ -37,15 +37,15 @@ struct RatesFluctuationDetailView: View {
     private func valuesView() -> some View {
         HStack(spacing: 8) {
             Text(viewModel.endRate.formatter(decimalPlaces: 4))
-                .font(.system(size: 28, weight: .bold))
+                .font(.system(size: 22, weight: .bold))
 
             Text(viewModel.changePct.toPercentage(with: true))
-                .font(.system(size: 18, weight: .semibold))
+                .font(.system(size: 16, weight: .semibold))
                 .foregroundStyle(viewModel.changePct.color)
                 .background(viewModel.changePct.color.opacity(0.2))
 
             Text(viewModel.changeDescription)
-                .font(.system(size: 18, weight: .semibold))
+                .font(.system(size: 16, weight: .semibold))
                 .foregroundStyle(viewModel.changePct.color)
 
             Spacer()

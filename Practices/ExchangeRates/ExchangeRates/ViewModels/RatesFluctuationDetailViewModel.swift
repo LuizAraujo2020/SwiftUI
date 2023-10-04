@@ -30,7 +30,7 @@ extension RatesFluctuationDetailView {
         private var cancellables = Set<AnyCancellable>()
 
         var title: String {
-            return "\(baseCurrency ?? "") a \(symbol)"
+            return "\(baseCurrency ?? "") a \(fromCurrency ?? "")"
         }
         var symbol: String {
             return rateFluctuation?.symbol ?? ""

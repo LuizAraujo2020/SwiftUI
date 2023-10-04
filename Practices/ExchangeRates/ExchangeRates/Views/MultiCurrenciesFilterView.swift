@@ -22,13 +22,15 @@ struct MultiCurrenciesFilterView: View {
 
     var body: some View {
         NavigationView {
-            if case .loading = viewModel.currentState {
-                ProgressView()
-                    .scaleEffect(2.2, anchor: .center)
-            } else if case .success = viewModel.currentState {
-                listCurrenciesView()
-            } else if case .success = viewModel.currentState {
-                errorView()
+            VStack {
+                if case .loading = viewModel.currentState {
+                    ProgressView()
+                        .scaleEffect(2.2, anchor: .center)
+                } else if case .success = viewModel.currentState {
+                    listCurrenciesView()
+                } else if case .success = viewModel.currentState {
+                    errorView()
+                }
             }
         }
         .onAppear {
