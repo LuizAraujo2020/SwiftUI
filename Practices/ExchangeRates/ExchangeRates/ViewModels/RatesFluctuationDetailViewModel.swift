@@ -6,18 +6,28 @@
 //
 
 import SwiftUI
+import Combine
 
 extension RatesFluctuationDetailView {
-    @MainActor class ViewModel: ObservableObject, RatesFluctuationDataProviderDelegate, RatesHistoricalDataProviderDelegate {
+    @MainActor class ViewModel: ObservableObject {
+        enum ViewState {
+            case start, loading, success
+        }
 
         @Published var ratesFluctuation = [RateFluctuationModel]()
         @Published var ratesHistorical = [RateHistoricalModel]()
         @Published var timeRange = TimeRangeEnum.today
+
         @Published var baseCurrency: String?
+        @Published var fromCurrency: String?
         @Published var rateFluctuation: RateFluctuationModel?
+
+        @Published var currentState: ViewState = .start
+        @Published var searchResults = [RateFluctuationModel]()
 
         private var fluctuationDataProvider: RatesFluctuationDataProvider?
         private var historicalDataProvider: RatesHistoricalDataProvider?
+        private var cancellables = Set<AnyCancellable>()
 
         var title: String {
             return "\(baseCurrency ?? "") a \(symbol)"
@@ -84,9 +94,6 @@ extension RatesFluctuationDetailView {
         ) {
             self.fluctuationDataProvider = fluctuationDataProvider
             self.historicalDataProvider = historicalDataProvider
-
-            self.fluctuationDataProvider?.delegate = self
-            self.historicalDataProvider?.delegate = self
         }
 
         func xAxisLabelFormatStyle(for date: Date) -> String {
@@ -98,13 +105,15 @@ extension RatesFluctuationDetailView {
             }
         }
 
-        func startStateView(baseCurrency: String, rateFluctuation: RateFluctuationModel, timeRange: TimeRangeEnum) {
+        func startStateView(baseCurrency: String, fromCurrency: String, timeRange: TimeRangeEnum) {
             self.baseCurrency = baseCurrency
-            self.rateFluctuation = rateFluctuation
+            self.fromCurrency = fromCurrency
             doFetchData(from: timeRange)
         }
 
         func doFetchData(from timeRange: TimeRangeEnum) {
+            currentState = .loading
+
             ratesFluctuation.removeAll()
             ratesHistorical.removeAll()
 
@@ -113,57 +122,55 @@ extension RatesFluctuationDetailView {
             }
 
             doFetchRatesFluctuation()
-            doFetchRatesHistorical(by: symbol)
+            doFetchRatesHistorical()
         }
 
         private func doFetchRatesFluctuation() {
             if let baseCurrency {
-                let startDate = timeRange.date
-                let endDate = Date()
+                let startDate = timeRange.date.toString()
+                let endDate = Date().toString()
                 fluctuationDataProvider?.fetchFluctuation(
                     by: baseCurrency, 
                     from: [],
-                    startDate: startDate.toString(),
-                    endDate: endDate.toString())
+                    startDate: startDate,
+                    endDate: endDate)
+                .sink(receiveCompletion: { completion in
+                    <#code#>
+                }, receiveValue: { ratesFluctuation in
+                    self.rateFluctuation = ratesFluctuation.filter({ $0.symbol == self.fromCurrency }).first
+                    self.ratesFluctuation = ratesFluctuation.filter({ $0.symbol != self.baseCurrency && $0.symbol != self.fromCurrency }).sorted { $0.symbol < $1.symbol }
+                }).store(in: &cancellables)
             }
         }
 
         private func doFetchRatesHistorical(by currency: String) {
             if let baseCurrency {
-                let startDate = timeRange.date
-                let endDate = Date()
+                let startDate = timeRange.date.toString()
+                let endDate = Date().toString()
                 historicalDataProvider?.fetchTimeSeries(
                     by: baseCurrency, 
                     from: currency,
-                    startDate: startDate.toString(),
-                    endDate: endDate.toString())
+                    startDate: startDate,
+                    endDate: endDate)
+                .sink(receiveCompletion: { <#Subscribers.Completion<Error>#> in
+                    <#code#>
+                }, receiveValue: { ratesHistorical in
+                    self.ratesHistorical = ratesHistorical.sorted { $0.period > $1.period }
+                }).store(in: &cancellables)
             }
         }
 
         func doComparation(with rateFluctuation: RateFluctuationModel) {
+            self.fromCurrency = rateFluctuation.symbol
             self.rateFluctuation = rateFluctuation
             doFetchRatesHistorical(by: rateFluctuation.symbol)
         }
 
         func doFilter(by currency: String) {
             if let rateFluctuation = ratesFluctuation.filter({ $0.symbol == currency }).first {
+                self.fromCurrency = rateFluctuation.symbol
                 self.rateFluctuation = rateFluctuation
                 doFetchRatesHistorical(by: rateFluctuation.symbol)
-            }
-        }
-
-        nonisolated func success(model: [RateFluctuationModel]) {
-            DispatchQueue.main.async {
-                self.rateFluctuation = model.filter({ $0.symbol == self.symbol }).first
-                self.ratesFluctuation = model.filter({ $0.symbol != self.baseCurrency }).sorted { $0.symbol < $1.symbol }
-            }
-        }
-
-        nonisolated func success(model: [RateHistoricalModel]) {
-            DispatchQueue.main.async {
-                DispatchQueue.main.async {
-                    self.ratesHistorical = model.sorted { $0.period > $1.period }
-                }
             }
         }
     }
