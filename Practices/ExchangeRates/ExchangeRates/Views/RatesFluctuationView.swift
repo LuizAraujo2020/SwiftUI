@@ -36,8 +36,8 @@ struct RatesFluctuationView: View {
                     viewModel.searchResults = viewModel.ratesFluctuations.filter {
                         $0.symbol.contains(searchText.uppercased()) ||
                         $0.change.formatter(decimalPlaces: 6).contains(searchText) ||
-                        $0.changePct.formatter(decimalPlaces: 6).contains(searchText)
-                        $0.endRate.formatter(decimalPlaces: 6).contains(searchText) ||
+                        $0.changePct.formatter(decimalPlaces: 6).contains(searchText) ||
+                        $0.endRate.formatter(decimalPlaces: 6).contains(searchText)
                     }
                 }
             }
@@ -122,7 +122,7 @@ struct RatesFluctuationView: View {
     private func ratesFluctuationListView() -> some View {
         List(viewModel.searchResults) { fluctuation in
             NavigationLink {
-                RatesFluctuationDetailView(baseCurrency: viewModel.baseCurrency, rateFluctuation: fluctuation)
+                RatesFluctuationDetailView(baseCurrency: viewModel.baseCurrency, fromCurrency: fluctuation.symbol)
             } label: {
                 VStack {
                     HStack(alignment: .center, spacing: 8) {

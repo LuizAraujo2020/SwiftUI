@@ -11,7 +11,7 @@ import Charts
 struct RatesFluctuationDetailView: View {
     @StateObject var viewModel = ViewModel()
     @State var baseCurrency: String
-    @State var rateFluctuation: RateFluctuationModel
+    @State var fromCurrency: String
 
     @State private var isPresentedBaseCurrencyFilter = false
     @State private var isPresentedMultiCurrenciesFilter = false
@@ -28,7 +28,7 @@ struct RatesFluctuationDetailView: View {
         .onAppear {
             viewModel.startStateView(
                 baseCurrency: baseCurrency,
-                rateFluctuation: rateFluctuation,
+                fromCurrency: fromCurrency,
                 timeRange: .today)
         }
     }
@@ -193,7 +193,6 @@ struct RatesFluctuationDetailView: View {
                                 Text(fluctuation.changePct.toPercentage())
                                     .font(.system(size: 14, weight: .semibold))
                                     .foregroundStyle(fluctuation.changePct.color)
-//                                    .frame(width: .infinity, alignment: .trailing)
                             }
                         }
                         .padding(.vertical, 8)
@@ -216,5 +215,5 @@ extension RatesFluctuationDetailView: BaseCurrencyFilterViewDelegate {
 }
 
 #Preview {
-    RatesFluctuationDetailView(baseCurrency: "BRL", rateFluctuation: .init(symbol: "EUR", change: 0.000_3, changePct: 0.1651, endRate: 0.181353))
+    RatesFluctuationDetailView(baseCurrency: "BRL", fromCurrency: "USD")
 }

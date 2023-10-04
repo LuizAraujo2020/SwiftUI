@@ -13,7 +13,11 @@ protocol CurrencyStoreProtocol: GenericStoreProtocol {
 
 class CurrencyStore: GenericStoreRequest, CurrencyStoreProtocol {
     func fetchSymbols(completion: @escaping completion<CurrencySymbolObject?>) {
-        guard let urlRequest = CurrencyRouter.symbols.asURLRequest() else { return completion(nil, error) }
-        request(urlRequest: urlRequest, completion: completion)
+        do {
+            guard let urlRequest = try  CurrencyRouter.symbols.asURLRequest() else { return completion(nil, error) }
+            request(urlRequest: urlRequest, completion: completion)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
